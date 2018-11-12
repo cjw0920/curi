@@ -159,7 +159,7 @@ $(document).on("click","#insert",function(elClickedObj){
 			<table>
 					<tr>
 						<th>제목 <span class="err" id="title_err">*</span></th>
-						<td colspan="3"><input id="title" name="title"></td>
+						<td colspan="3"><input id="title" name="title" value="${boardview.title}"></td>
 					</tr>
 					
 					<tr>
@@ -170,7 +170,7 @@ $(document).on("click","#insert",function(elClickedObj){
 					<tr>
 						<td id="board_content" colspan="4">
 								<a id="add_file"><input type="file" name="uploadfile" id="uploadfile"></div></a>
-								<textarea id="content" name="content"></textarea>
+								<textarea id="content" name="content">${boardview.content}</textarea>
 						</td>
 					</tr>
 			</table>
