@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com/curi/mybatis/CuriMapper.xml">
+
+
+
+
+
+	<!-- product dao -->
+	<select id="bestView" resultType="com.curi.dto.ProductDTO">
+		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_purchasecnt DESC) WHERE ROWNUM<=4]]>
+	</select>
+	
+	
+	
+	
+	<!-- product dao -->
+	<select id="newView" resultType="com.curi.dto.ProductDTO">
+		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_indate DESC) WHERE ROWNUM<=4]]>
+	</select>
+	
+	<!-- ========================================================== -->
+	<!-- member dao -->
+	
+	<insert id="inserMember" parameterType="com.curi.dto.MemberDTO">
+		INSERT INTO member(id, pw, name, phone, zipcode, addr1, addr2, email) 
+		VALUES(#{id},#{pw},#{name},#{phone},#{zipcode},#{addr1},#{addr2},#{email})
+	</insert>
+
+	<select id="confirmId" parameterType="String" resultType="String">
+		SELECT id FROM member WHERE id= #{userid}
+	</select>
+	
+	<select id="confirmPw" parameterType="com.curi.dto.MemberDTO" resultType="String">
+		SELECT id FROM member WHERE id= #{id} AND pw=#{pw}
+	</select>
+	
+	<select id="loginCheck" parameterType="com.curi.dto.MemberDTO" resultType="com.curi.dto.MemberDTO">
+		SELECT id FROM member WHERE id= #{id} AND pw=#{pw}
+	</select>
+	
+	<select id="updateMember" parameterType="com.curi.dto.MemberDTO">
+		UPDATE member set 
+		pw =#{pw}, name=#{name}, phone=#{phone}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, email=#{email} 
+		where id=#{id} 
+	</select>
+	
+	<select id="updatePw" parameterType="com.curi.dto.MemberDTO">
+		UPDATE member SET pw=#{pw} where id=#{id}
+	</select>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM member WHERE id = #{userid}
+	</delete>
+	
+	<!-- ========================================================== -->
+	
+	<!-- Board -->
+	
+	<select id="countPaging" resultType="int">
+		<![CDATA[SELECT count(bno) FROM curiboard WHERE bno > 0 ]]>
+        
+		                <if test='flag=="1"'>
+		                	<![CDATA[AND title LIKE '%' || #{keyword}||'%']]> 
+						</if>
+
+						<if test='flag=="2"'>
+		                	<![CDATA[AND writer LIKE '%' || #{keyword}||'%']]> 
+						</if>			                 
+
+						<if test='flag=="3"'>
+		                	<![CDATA[AND content LIKE '%' || #{keyword}||'%']]> 
+						</if>
+
+						<if test='flag=="4"'>
+		                	<![CDATA[AND title LIKE '%' || #{keyword}||'%' OR content LIKE '%' || #{keyword}||'%']]> 
+						</if>
+	</select>
+	
+	<select id="boardlist" resultType="com.curi.dto.BoardDTO">
+		<![CDATA[SELECT * FROM (SELECT rownum rnum, 
+       			 a.*
+       			 FROM (SELECT *
+		               	 FROM curiboard
+		                 WHERE bno>0 ]]>               
+		                 
+		                <if test='flag=="1"'>
+		                	<![CDATA[AND title LIKE '%' || #{keyword}||'%']]> 
+						</if>
+
+						<if test='flag=="2"'>
+		                	<![CDATA[AND writer LIKE '%' || #{keyword}||'%']]> 
+						</if>			                 
+
+						<if test='flag=="3"'>
+		                	<![CDATA[AND content LIKE '%' || #{keyword}||'%']]> 
+						</if>
+
+						<if test='flag=="4"'>
+		                	<![CDATA[AND title LIKE '%' || #{keyword}||'%' OR content LIKE '%' || #{keyword}||'%']]> 
+						</if>
+
+		  <![CDATA[ORDER BY bno desc
+    					) a 
+ 					)
+				 WHERE rnum BETWEEN #{pageStart} AND #{perPageNum}]]> 
+				 
+				 
+	</select>
+	
+	<select id="boardDetailView" resultType="com.curi.dto.BoardDTO">
+		
+		<![CDATA[SELECT * FROM curiboard
+				 WHERE bno = #{bno}]]>
+	</select>		
+	
+	<update id="viewCnt">
+		
+		<![CDATA[UPDATE curiboard SET viewcnt = viewcnt+1 WHERE bno = #{bno}]]>
+		
+	</update>
+	
+	
+	<insert id="boardInsert" parameterType="com.curi.dto.BoardDTO">
+	
+		 
+		<choose>
+			<when test="content !=null">
+				INSERT INTO curiboard(bno,title,content,writer,filename,filesize)
+				VALUES(seq_curiboard.NEXTVAL,#{title},#{content},#{writer},#{filename},#{filesize})
+			</when>
+			<otherwise>
+				INSERT INTO curiboard(bno,title,writer,filename,filesize)
+				VALUES(seq_curiboard.NEXTVAL,#{title},#{writer},#{filename},#{filesize})
+			</otherwise>
+		</choose>
+	</insert>
+	
+	
+	
+</mapper>
