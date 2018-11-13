@@ -26,7 +26,7 @@
 	}
 	
 	#board span{
-		font-size: 30px;
+		font-size: 17px;
 	}
 	
 	table{
@@ -55,6 +55,12 @@
 		font-size: 20px;
 		background: none;
 	}
+	
+	a{
+		color : black;
+	}
+	
+	
 	#board_content{
 		margin : 0;
 		padding :0;
@@ -119,6 +125,14 @@
    		 font-size: 17px;
 	}
 	
+	.btn-file{
+		background-color: #d6ecfa;
+		border-radius: 10%;
+		font-weight: bold;
+	}
+	
+	
+	
 </style>
 
 <script type="text/javascript" src="<%=path%>/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
@@ -142,6 +156,31 @@ $(document).on("click","#insert",function(elClickedObj){
 	}
 	$("#frm_bin").submit();
 });
+
+	
+
+//file버튼 눌렀을때 파일 선택창 뜨게 만들기
+$(document).on("click",".btn-file",function(){
+	$("#uploadfile").click();
+});
+
+//만약 값이 바뀌면 새로만든 파일 알려주는 곳을 실질 입력되는 값과 동일시 하게 만드는곳?
+$(document).on("change","#uploadfile",function(){
+	var filename = this.files[0].name;
+	$("#file-name").text(filename);
+	$("#close_btn").css("display","inline");
+});
+
+//close버튼 누르면 파일 선택 취소 겸 fafa icon none시키기
+$(document).on("click","#close_btn",function(){
+	$("#uploadfile").replaceWith($("#uploadfile").clone(true));
+	$("#uploadfile").val("");
+	$("#file-name").text("선택된 파일 없음");
+	$("#close_btn").css("display","none");
+
+});
+
+
 
 
 </script>
@@ -169,7 +208,14 @@ $(document).on("click","#insert",function(elClickedObj){
 					
 					<tr>
 						<td id="board_content" colspan="4">
-								<a id="add_file"><input type="file" name="uploadfile" id="uploadfile"></div></a>
+								<a id="add_file">
+								
+								<input type="file" name="uploadfile" id="uploadfile" style="display : none;">
+								<input type="button" class="btn btn-file" value="파일선택">
+								<span class="files" id="file-name" style="height:29px;border:none;">선택된 파일 없음</span>
+								<i class="fa fa-close" id="close_btn" style="display:none"></i>
+								
+								</a>
 								<textarea id="content" name="content">${boardview.content}</textarea>
 						</td>
 					</tr>
