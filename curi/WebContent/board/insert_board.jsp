@@ -166,9 +166,17 @@ $(document).on("click",".btn-file",function(){
 
 //만약 값이 바뀌면 새로만든 파일 알려주는 곳을 실질 입력되는 값과 동일시 하게 만드는곳?
 $(document).on("change","#uploadfile",function(){
-	var filename = this.files[0].name;
-	$("#file-name").text(filename);
-	$("#close_btn").css("display","inline");
+	
+	var filesize = this.files[0].name;
+	
+	if(filesize.length<1){
+		$("#file-name").text("선택된 파일 없음");
+		$("#close_btn").css("display","none");
+	}else{
+		$("#file-name").text(filename);
+		$("#close_btn").css("display","inline");
+	}
+	
 });
 
 //close버튼 누르면 파일 선택 취소 겸 fafa icon none시키기

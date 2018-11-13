@@ -166,9 +166,18 @@ $(document).on("click",".btn-file",function(){
 
 //만약 값이 바뀌면 새로만든 파일 알려주는 곳을 실질 입력되는 값과 동일시 하게 만드는곳?
 $(document).on("change","#uploadfile",function(){
-	var filename = this.files[0].name;
-	$("#file-name").text(filename);
-	$("#close_btn").css("display","inline");
+	
+	var filesize = this.files[0].name;
+	
+	if(filesize.length<1){
+		$("#file-name").text("선택된 파일 없음");
+		$("#close_btn").css("display","none");
+	}else{
+		var filename = this.files[0].name;
+		$("#file-name").text(filename);
+		$("#close_btn").css("display","inline");
+	}
+	
 });
 
 //close버튼 누르면 파일 선택 취소 겸 fafa icon none시키기
@@ -194,16 +203,16 @@ $(document).on("click","#close_btn",function(){
 			<span>게시판</span>
 		</div>
 		
-		<form action="boardInsertPlay.bizpoll" id="frm_bin" method="post" enctype="multipart/form-data">
+		<form action="boardUpdatePlay.bizpoll" id="frm_bin" method="post" enctype="multipart/form-data">
 			<table>
-					<tr>
+					<tr><input id="bno" name="bno" value="${boardview.bno}" style="display:none">
 						<th>제목 <span class="err" id="title_err">*</span></th>
 						<td colspan="3"><input id="title" name="title" value="${boardview.title}"></td>
 					</tr>
 					
 					<tr>
 						<th>작성자</th>
-						<td colspan="3"><input readonly="readonly" id="writer" name="writer" value="${sessionScope.loginUser.id}"></td>
+						<td colspan="3"><input readonly="readonly" id="writer" name="writer" value="${boardview.writer}"></td>
 					</tr>
 					
 					<tr>
@@ -212,8 +221,14 @@ $(document).on("click","#close_btn",function(){
 								
 								<input type="file" name="uploadfile" id="uploadfile" style="display : none;">
 								<input type="button" class="btn btn-file" value="파일선택">
-								<span class="files" id="file-name" style="height:29px;border:none;">선택된 파일 없음</span>
-								<i class="fa fa-close" id="close_btn" style="display:none"></i>
+								<span class="files" id="file-name" style="height:29px;border:none;">${boardview.filename}</span>
+								<input type="hidden" id="post-file-name" name = "post-file-name" value="${boardview.filename}">
+								
+								
+								<c:if test="${boardview.filesize>0}">
+									<i class="fa fa-close" id="close_btn" style="display:inline-block"></i>
+								</c:if>
+								
 								
 								</a>
 								<textarea id="content" name="content">${boardview.content}</textarea>

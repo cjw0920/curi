@@ -17,6 +17,7 @@ import com.curi.action.BoardInsertPlayAction;
 import com.curi.action.BoardListAction;
 import com.curi.action.BoardSearchAction;
 import com.curi.action.BoardUpdateAction;
+import com.curi.action.BoardUpdatePlayAction;
 import com.curi.action.BoardViewcntAction;
 import com.curi.action.ConstractAction;
 import com.curi.action.DownloadAction;
@@ -149,8 +150,10 @@ public class BizpollFrontController extends HttpServlet {
 		}else if(command.equals("/boardUpdate.bizpoll")) {
 			action =new BoardUpdateAction();
 			forward = action.excute(request, response);
+		}else if(command.equals("/boardUpdatePlay.bizpoll")) {
+			action =new BoardUpdatePlayAction();
+			forward = action.excute(request, response);
 		}
-		
 		
 		//공통분기작업(페이지이동)
 		if(forward !=null) {
