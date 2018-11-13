@@ -150,4 +150,17 @@
 			</otherwise>
 		</choose>
 	</select>	
+	
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM curiboard WHERE bno = #{bno}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>

@@ -432,7 +432,7 @@ $(document).on("click","#file",function() {
 	<a class="overlay" id="login_form"></a>
         <div class="popup">
             <h2>정말 삭제하시겠습니까?</h2>
-            <a href="#close" class="delete_btn" id="delete_yes">
+            <a href="BoardDelete.bizpoll?bno=${boardview.bno}" class="delete_btn" id="delete_yes">
 	            <input type="button" value="네">
             </a>
             <a href="#" class="delete_btn">

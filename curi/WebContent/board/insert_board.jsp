@@ -173,6 +173,7 @@ $(document).on("change","#uploadfile",function(){
 		$("#file-name").text("선택된 파일 없음");
 		$("#close_btn").css("display","none");
 	}else{
+		var filename = this.files[0].name;
 		$("#file-name").text(filename);
 		$("#close_btn").css("display","inline");
 	}
@@ -187,6 +188,7 @@ $(document).on("click","#close_btn",function(){
 	$("#close_btn").css("display","none");
 
 });
+
 
 
 

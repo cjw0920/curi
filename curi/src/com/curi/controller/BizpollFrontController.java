@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.curi.action.Action;
 import com.curi.action.ActionForward;
+import com.curi.action.BoardDeleteAction;
 import com.curi.action.BoardDetailAction;
 import com.curi.action.BoardInsertAction;
 import com.curi.action.BoardInsertPlayAction;
@@ -153,7 +154,13 @@ public class BizpollFrontController extends HttpServlet {
 		}else if(command.equals("/boardUpdatePlay.bizpoll")) {
 			action =new BoardUpdatePlayAction();
 			forward = action.excute(request, response);
+		}else if(command.equals("/BoardDelete.bizpoll")) {
+			action =new BoardDeleteAction();
+			forward = action.excute(request, response);
 		}
+		
+		
+		
 		
 		//공통분기작업(페이지이동)
 		if(forward !=null) {

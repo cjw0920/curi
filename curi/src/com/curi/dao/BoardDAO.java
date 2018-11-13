@@ -148,7 +148,6 @@ public class BoardDAO {
 		sqlSession = sqlSessionFactory.openSession();
 		int result = 0;
 		try {
-			System.out.println("오긴옴?");
 			result =sqlSession.update("boardUpdate",bDto);
 			sqlSession.commit();
 			
@@ -161,6 +160,19 @@ public class BoardDAO {
 	}
 	
 	
-	
+	public int boardDelete(int bno) {
+		sqlSession = sqlSessionFactory.openSession();
+		int result = 0;
+		try {
+			result =sqlSession.update("boardDelete",bno);
+			sqlSession.commit();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return result;
+	}
 	
 }
