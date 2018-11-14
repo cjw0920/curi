@@ -45,18 +45,57 @@ public class BoardUpdatePlayAction implements Action{
 		String writer = multi.getParameter("writer");
 		String filename = " ";	//공백
 		int filesize = 0;
-		String postfile = multi.getParameter("post-file-name");
-	
+		String nowFileName = multi.getParameter("now-file-name");
+		String nFileSize = multi.getParameter("now-file-size");
+
+		int nowFileSize =0;
+		if(!nFileSize.equals("")) {
+			nowFileSize = Integer.parseInt(nFileSize);
+		}
+
+		BoardDAO bDao = BoardDAO.getInstance();
+		BoardDTO bDto = bDao.boardDetailView(bno);
+		String pfilename = bDto.getFilename();
+		String pfilesize = String.valueOf(bDto.getFilesize());
+		System.out.println("과거 : "+pfilename+","+pfilesize);
+		System.out.println("현재 : "+nowFileName+","+nowFileSize);
 		
-		//파일 내용 지우는 것
-		File file = new File(Constants.UPLOAD_PATH+postfile);
-		file.delete();
+		int flag = 0;
+		if(nowFileName.equals(pfilename)&&nowFileSize==0) {
+			//파일이름이 같으면서 사이즈가 같거나 또는 사이즈가 0이면 파일 지우지 않음, filename과 filesize도 수정하면 안됨
+			flag=1;
+		}else {
+			//파일 내용 지우는 것
+			File file = new File(Constants.UPLOAD_PATH+pfilename);
+			file.delete();
+		}
+		
 		
 		try {
 			Enumeration files = multi.getFileNames();
 			while(files.hasMoreElements()) {
 				String file1 =(String)files.nextElement();	
-				filename = multi.getFilesystemName(file1);	//첨부파일의 파일이름
+				//multi.getOriginalFileName(filename);// 오리지널 파일네임
+				filename = multi.getFilesystemName(file1);	//파일네임 가지고 오나 중복이면 중복정책
+				System.out.println("저장된 첨부파일 : "+filename); 
+				
+				if(nowFileSize!=0) {
+					String result  = filename.substring(nowFileName.length());
+					System.out.println("TEST : "+nowFileName+","+filename+","+result);
+					
+					//파일명을 현재 파일명으로 수정!
+					if(result.length()>0) {
+						File file=new File(Constants.UPLOAD_PATH+filename);
+						File fileNew = new File(Constants.UPLOAD_PATH+nowFileName);
+						file.renameTo(fileNew);//aaa1->aaa
+						
+						//DB에 넣을 정보
+						filename = nowFileName;
+						filesize = nowFileSize;
+					}
+				}
+				
+				
 				File f1 = multi.getFile(file1);				//첨부파일의 파일
 				
 				if(f1 != null) {
@@ -69,15 +108,13 @@ public class BoardUpdatePlayAction implements Action{
 			e.printStackTrace();
 		}
 		if(filename == null || filename.trim().equals("")) {
-			filename = "-";
+			filename = "no";
 		}
 		
-		BoardDAO bDao = BoardDAO.getInstance();
-		System.out.println(bno+","+title+", "+ content+", "+writer+","+filename+","+postfile);
 		
 		int bno1 = Integer.parseInt(bno);
 		
-		BoardDTO bDto = new BoardDTO(bno1,title, content, writer, filename, filesize);
+		bDto = new BoardDTO(bno1,title, content, writer, filename, filesize);
 		
 		int result = bDao.boardUpdate(bDto);
 		

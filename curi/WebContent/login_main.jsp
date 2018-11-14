@@ -240,7 +240,6 @@ $(document).ready(function(){
 				}
 			});
 			
-			
 		}else if(id==""&pw!=""){
 			$("#err_check_msg").text("아이디를 입력하세요");
 			$("#err").css("display","block")
@@ -252,7 +251,6 @@ $(document).ready(function(){
 			$("#err").css("display","block")
 			return; /* JAVA로 이동하지 않고 화면단으로 다시 돌아감 */
 		}
-		
 		
 		
 	}); 

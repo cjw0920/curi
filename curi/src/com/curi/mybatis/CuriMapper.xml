@@ -143,10 +143,23 @@
 	<select id="boardUpdate" parameterType="com.curi.dto.BoardDTO">
 			<choose>
 			<when test="content !=null">
-				UPDATE curiboard SET title=#{title},content=#{content},writer=#{writer},filename=#{filename},filesize=#{filesize} where bno=#{bno}
+				
+				UPDATE curiboard SET title=#{title},writer=#{writer},
+				<if test="filename != 'no'">
+					filename = #{filename},
+					filesize = #{filesize},
+				</if>
+					content=#{content}
+					 where bno=#{bno}
 			</when>
 			<otherwise>
-				UPDATE curiboard SET title=#{title},writer=#{writer},filename=#{filename},filesize=#{filesize} where bno=#{bno} 
+				
+				UPDATE curiboard SET title=#{title},writer=#{writer},
+				<if test="filename != 'no'">
+					filename = #{filename},
+					filesize = #{filesize}
+				</if>
+					where bno=#{bno}
 			</otherwise>
 		</choose>
 	</select>	
