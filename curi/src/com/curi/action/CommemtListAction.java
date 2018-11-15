@@ -7,27 +7,22 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.curi.dao.BoardDAO;
 import com.curi.dao.ReplyDAO;
-import com.curi.dto.BoardDTO;
 import com.curi.dto.ReplyDTO;
 
-public class BoardDetailAction implements Action{
+public class CommemtListAction implements Action{
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
-		String url="board/detail_board.jsp";
+
+		String url = "board/commentlist.jsp";
 		
 		String bno = request.getParameter("bno");
-		System.out.println(bno);
 		
-		BoardDAO bDao = BoardDAO.getInstance();
-		BoardDTO bDto = bDao.boardDetailView(bno);
-		
-		request.setAttribute("boardview", bDto);
+		ReplyDAO rDao = ReplyDAO.getInstance();
+		List<ReplyDTO> replyList = rDao.replyListALL(bno);
+		request.setAttribute("replyList", replyList);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath(url);
@@ -35,4 +30,5 @@ public class BoardDetailAction implements Action{
 		
 		return forward;
 	}
+
 }

@@ -168,8 +168,14 @@
 		DELETE FROM curiboard WHERE bno = #{bno}
 	</delete>
 	
+	<!-- ========================================================== -->
 	
-	
+	<!-- Reply -->
+	<select id="replyListAll" parameterType="String" resultType="com.curi.dto.ReplyDTO">
+		SELECT * FROM curireply
+		WHERE bno = #{bno}
+		ORDER BY rno ASC
+	</select>
 	
 	
 	

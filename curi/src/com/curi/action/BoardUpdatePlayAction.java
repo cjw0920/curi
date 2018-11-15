@@ -108,10 +108,12 @@ public class BoardUpdatePlayAction implements Action{
 			e.printStackTrace();
 		}
 		if(filename == null || filename.trim().equals("")) {
-			filename = "no";
+			filename = "-";
 		}
 		
-		
+		if(flag==1) {
+			filename = "no";
+		}
 		int bno1 = Integer.parseInt(bno);
 		
 		bDto = new BoardDTO(bno1,title, content, writer, filename, filesize);

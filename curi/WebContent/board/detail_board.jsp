@@ -300,15 +300,39 @@
 	#delete_yes{
 		margin-left: 25%;
 	}
+	
+	.reply_del{
+		text-align: right;
+	}
+	
 </style>
 
 <script type="text/javascript">
+$(document).ready(function(){
+	
+	//준비되면 댓글목록을 조회하는 ajax실행
+	comment_list();
+});
+function comment_list(){
+	$.ajax({
+		type:"post",
+		url:"commemtlist.bizpoll",
+		data:"bno=${boardview.bno}",
+		success:function(result){
+			$("#commentList").html(result);			
+		}
+	});
+}
+
 
 $(document).on("click","#file",function() {
 	
 	
 	
 });
+
+
+
 </script>
 
 
@@ -375,57 +399,53 @@ $(document).on("click","#file",function() {
 	
 	<div id="review">
 		
-		<span>댓글 수 : </span>
-		
 		<c:choose>
 			<c:when test="${empty sessionScope.loginUser}">
 				<div id="login_x">
 					<span>로그인 후 댓글을 달수 있습니다.</span>
 				</div>
 			</c:when>
-			<c:otherwise>
-				<div id="login_o">
-					<table>
-						<tr>
-							<td>
-								<input id="login_input" type="text" name="" size="40" placeholder="댓글을 입력해주세요">
-							</td>
-							<td>
-								<div id="insert_btn">완료</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</c:otherwise>
-			
 		</c:choose>
 		
-		
+		<c:if test="${replyList.size()==0}">
 		<div>
-			<table>
-				<tr>
-				
-					<td colspan="2">작성자</td>
-					
-				</tr>
-				
-				<tr>
-					<td id="review_content">댓글 내용물</td>
-					<td id="icon" rowspan="2">
-						<i class="far fa-thumbs-up" id="good_icon"></i>
-						<span> 좋아요</span>
-						<div></div>
-						<i class="far fa-thumbs-down" id="bad_icon"></i>
-						<span> 싫어요</span>
-					</td>
-				</tr>
-
-				<tr><td id="review_date">2018.03.11</td></tr>				
-			</table>
+			등록된 댓글이 없습니다. 첫번째 댓글을 남겨주세요
 		</div>
+		</c:if>
+		<c:forEach items="${replyList}" var="replyview">
+			<div>
+				<table>
+					<tr>
+					
+						<td colspan="2">${replyview.writer}</td>
+						
+						<c:if test="${sessionScope.loginUser.id==replyview.writer}">
+							<a href="#" class="reply_del" data_num="${replyview.rno}">삭제</a>
+						</c:if>
+						
+					</tr>
+					
+					<tr>
+						<td id="review_content">${replyview.content}</td>
+						<td id="icon" rowspan="2">
+							<i class="far fa-thumbs-up" id="good_icon"></i>
+							<span> 좋아요</span>
+							<div></div>
+							<i class="far fa-thumbs-down" id="bad_icon"></i>
+							<span> 싫어요</span>
+						</td>
+					</tr>
+					
+					<tr><td id="review_date"><fmt:formatDate pattern="yyyy-MM-dd" value="${replyview.regdate}"/></td></tr>				
+				</table>
+			</div>
+		</c:forEach>
 		
+	<div id="reply_wrap">
+		<div id="commentList">
 		
-		
+		</div>
+	</div>	
 		
 	</div>
 	
