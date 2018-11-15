@@ -21,6 +21,7 @@ import com.curi.action.BoardUpdateAction;
 import com.curi.action.BoardUpdatePlayAction;
 import com.curi.action.BoardViewcntAction;
 import com.curi.action.CommemtListAction;
+import com.curi.action.CommemtListInsertAction;
 import com.curi.action.ConstractAction;
 import com.curi.action.DownloadAction;
 import com.curi.action.IdCheckAction;
@@ -160,6 +161,9 @@ public class BizpollFrontController extends HttpServlet {
 			forward = action.excute(request, response);
 		}else if(command.equals("/commemtlist.bizpoll")) {
 			action =new CommemtListAction();
+			forward = action.excute(request, response);
+		}else if(command.equals("/CommemtListInsert.bizpoll")) {
+			action =new CommemtListInsertAction();
 			forward = action.excute(request, response);
 		}
 		

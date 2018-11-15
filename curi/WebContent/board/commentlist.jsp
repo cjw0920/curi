@@ -16,18 +16,7 @@
 		
 		<span>댓글 수 : ${replyList.size()}</span>
 		
-				<div id="login_o">
-					<table>
-						<tr>
-							<td>
-								<input id="login_input" type="text" name="" size="40" placeholder="댓글을 입력해주세요">
-							</td>
-							<td>
-								<div id="insert_btn">완료</div>
-							</td>
-						</tr>
-					</table>
-				</div>
+				
 			
 		
 		<c:if test="${replyList.size()==0}">
@@ -40,10 +29,10 @@
 				<table>
 					<tr>
 					
-						<td colspan="2">${replyview.writer}</td>
+						<td colspan="2">${replyview.writer} <a href="#" class="reply_del" data_num="${replyview.rno}">삭제</a></td>
 						
 						<c:if test="${sessionScope.loginUser.id==replyview.writer}">
-							<a href="#" class="reply_del" data_num="${replyview.rno}">삭제</a>
+							
 						</c:if>
 						
 					</tr>

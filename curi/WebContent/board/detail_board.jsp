@@ -302,7 +302,7 @@
 	}
 	
 	.reply_del{
-		text-align: right;
+		color : red;
 	}
 	
 </style>
@@ -312,6 +312,11 @@ $(document).ready(function(){
 	
 	//준비되면 댓글목록을 조회하는 ajax실행
 	comment_list();
+	
+	
+	$("#insert_btn").click(function(){
+		comment_insert();
+	});
 });
 function comment_list(){
 	$.ajax({
@@ -324,7 +329,17 @@ function comment_list(){
 	});
 }
 
-
+function comment_insert(){	
+	alert("click");
+	$.ajax({
+		type:"post",
+		url:"CommemtListInsert.bizpoll",
+		data:"rno=${replyview.rno}",
+		success:function(result){
+			$("#commentList").html(result);			
+		}
+	});
+}
 $(document).on("click","#file",function() {
 	
 	
@@ -442,6 +457,20 @@ $(document).on("click","#file",function() {
 		</c:forEach>
 		
 	<div id="reply_wrap">
+	
+		<div id="login_o">
+					<table>
+						<tr>
+							<td>
+								<input id="login_input" type="text" name="" size="40" placeholder="댓글을 입력해주세요">
+							</td>
+							<td>
+								<div id="insert_btn">완료</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+	
 		<div id="commentList">
 		
 		</div>
