@@ -1,13 +1,17 @@
 package com.curi.action;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.curi.common.Constants;
 import com.curi.dao.BoardDAO;
 import com.curi.dto.BoardDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class BoardDeleteAction implements Action{
 
@@ -16,18 +20,22 @@ public class BoardDeleteAction implements Action{
 			throws ServletException, IOException {
 
 		String url="boardList.bizpoll";
+		BoardDAO bDao = BoardDAO.getInstance();
 		
 		
 		String bno = request.getParameter("bno");
+		BoardDTO bDto = bDao.boardDetailView(bno);
 		System.out.println(bno);
+		String pfilename = bDto.getFilename();
+		System.out.println(pfilename);
 		
-		BoardDAO bDao = BoardDAO.getInstance();
 		
 		int bno1 = Integer.parseInt(bno);
 		
 		
 		int result = bDao.boardDelete(bno1);
-		
+		File file = new File(Constants.UPLOAD_PATH+pfilename);
+		file.delete();
 		if(result>0) {
 			System.out.println("삭제성공");
 		}else{

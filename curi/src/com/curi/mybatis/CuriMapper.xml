@@ -177,9 +177,16 @@
 		ORDER BY rno ASC
 	</select>
 	
+	<delete id="replyDelete" parameterType="String">
+		DELETE FROM curireply WHERE rno = #{rno}
+	</delete>
 	
 	
+	<insert id="replyInsert"  parameterType="com.curi.dto.ReplyDTO">
 	
+	INSERT INTO curireply(rno,writer,content,bno)
+	VALUES(seq_curireply_rno.NEXTVAL,#{writer},#{content},#{bno})
 	
+	</insert>
 	
 </mapper>

@@ -305,6 +305,15 @@
 		color : red;
 	}
 	
+	.reply_up{
+		color : blue;
+	}
+	
+	#review_content{
+		outline: none;
+		border: 0;
+	}
+	
 </style>
 
 <script type="text/javascript">
@@ -314,10 +323,8 @@ $(document).ready(function(){
 	comment_list();
 	
 	
-	$("#insert_btn").click(function(){
-		comment_insert();
-	});
 });
+
 function comment_list(){
 	$.ajax({
 		type:"post",
@@ -329,26 +336,50 @@ function comment_list(){
 	});
 }
 
-function comment_insert(){	
-	alert("click");
+$(document).on("click",".reply_del",function() {
+	var rno = $(this).attr("data_num");
 	$.ajax({
 		type:"post",
-		url:"CommemtListInsert.bizpoll",
-		data:"rno=${replyview.rno}",
+		url:"commemtDelete.bizpoll",
+		data:"rno="+rno,
 		success:function(result){
-			$("#commentList").html(result);			
+			comment_list();	
 		}
 	});
-}
-$(document).on("click","#file",function() {
-	
-	
-	
 });
 
 
 
+$(document).on("click","#insert_btn",function() {
+	var content = $("#login_input").val();
+	alert(content);
+	if(content==""){
+		$("#login_input").focus();
+		$("#login_o td").css("border","1px solid red");
+		return false;
+	}else{
+		var bno = ${boardview.bno};
+		$("#re_bno").val(bno);
+	}
+	$.ajax({
+		url : "replyInsert.bizpoll",
+		data:$("#frm_reply").serialize(),
+		contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+		success:function(){
+			comment_list();
+			$("#login_input").val("");
+		},
+		error:function(){
+			alert("system error!");
+		}
+	});
+	
+
+});
+
+
 </script>
+
 
 
 </head>
@@ -458,18 +489,7 @@ $(document).on("click","#file",function() {
 		
 	<div id="reply_wrap">
 	
-		<div id="login_o">
-					<table>
-						<tr>
-							<td>
-								<input id="login_input" type="text" name="" size="40" placeholder="댓글을 입력해주세요">
-							</td>
-							<td>
-								<div id="insert_btn">완료</div>
-							</td>
-						</tr>
-					</table>
-				</div>
+			
 	
 		<div id="commentList">
 		

@@ -25,6 +25,7 @@ public class ReplyDAO {
 		sqlSession = sqlSessionFactory.openSession();
 		try {
 			list = sqlSession.selectList("replyListAll",bno);
+			sqlSession.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -33,4 +34,28 @@ public class ReplyDAO {
 		return list;
 	}
 	
+	public void replyDelete(String rno){
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.selectList("replyDelete",rno);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	
+	public void replyInsert(ReplyDTO rDto){
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.selectList("replyInsert",rDto);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
 }
