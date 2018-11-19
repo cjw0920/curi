@@ -57,7 +57,7 @@
 	}
 	
 	#title{
-		width : 400px;
+		width : 300px;
 	}
 	
 	#writer{
@@ -181,6 +181,10 @@
 		color: #c0c0c0;
 	}
 	
+	#replycnt{
+		color: orange;
+	}
+	
 </style>
 
 <script type="text/javascript">
@@ -210,10 +214,10 @@ $(document).on("click","#search_btn",function() {
 		 </div>
 		 
 		 <div>
-		 	<a>최신순</a>
-		 	<a>추천순</a>
-		 	<a>조회순</a>
-		 	<a>댓글순</a>
+		 	<a href="boardList.bizpoll?flag=${flag}&keyword=${keyword}&key=new" id="orderNew">최신순</a>
+		 	<a href="boardList.bizpoll?flag=${flag}&keyword=${keyword}&key=good" id="orderGood">추천순</a>
+		 	<a href="boardList.bizpoll?flag=${flag}&keyword=${keyword}&key=cnt" id="ordercnt">조회순</a>
+		 	<a href="boardList.bizpoll?flag=${flag}&keyword=${keyword}&key=reply" id="orderReply">댓글순</a>
 		 	<a href="boardInsert.bizpoll"><div id="insert_board">글쓰기</div></a>
 		 </div>
 		
@@ -224,6 +228,7 @@ $(document).on("click","#search_btn",function() {
 			 		<th id="title">제목</th>
 			 		<th id="writer">작성자</th>
 			 		<th id="wdate">작성일</th>
+			 		<th id="wdate">좋아요수</th>
 			 		<th id="wdate">조회수</th>
 			 		<th id="wdate">첨부파일</th>
 			 		
@@ -236,7 +241,7 @@ $(document).on("click","#search_btn",function() {
 			 	<tr>
 			 		<td>${bDto.bno}</td>
 			 		<td id="title_con">			 		
-			 			<a href="boardViewcnt.bizpoll?bno=${bDto.bno}">${bDto.title}</a>
+			 			<a href="boardViewcnt.bizpoll?bno=${bDto.bno}">${bDto.title}</a><span id="replycnt"> [${bDto.replycnt}]</span>
 			 			<c:if test="${today2==regdate2}"><span id="today_time">New</span></c:if>
 			 		</td>
 			 		<td>${bDto.writer}</td>
@@ -255,6 +260,9 @@ $(document).on("click","#search_btn",function() {
 			 		
 			 		
 			 		</td>
+			 		
+			 		<td>${bDto.goodcnt}</td>
+			 		
 			 		<td>${bDto.viewcnt}</td>
 			 		<td>
 			 		

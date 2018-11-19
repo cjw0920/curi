@@ -446,7 +446,7 @@ $(document).on("click","#myBtn", function(){
 								</c:choose>
 							</div>
 						</li>
-						<li><a href="">고객센터</a></li>
+						<li><a href="<%=path%>/boardList.bizpoll">고객센터</a></li>
 					</ul>
 				</div>
 			</div>

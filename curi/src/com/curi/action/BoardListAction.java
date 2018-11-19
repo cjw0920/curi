@@ -35,9 +35,17 @@ public class BoardListAction implements Action{
 		System.out.println("페이지 번호"+page);
 		criDto.setPage(page);
 
+		
+		String code ="new";
+		
+		if(request.getParameter("key")!=null) {
+			code = request.getParameter("key");
+		}
+		criDto.setCode(code);
+		request.setAttribute("code", code);//키값 주고 받기
+		
 		String flag=null;
 		String keyword = null;
-		
 		if(request.getParameter("keyword")!=null) {
 			System.out.println("검색기능");
 			

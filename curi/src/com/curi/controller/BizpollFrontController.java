@@ -39,7 +39,9 @@ import com.curi.action.MemberUpdateAction;
 import com.curi.action.MemberUpdatePlayAction;
 import com.curi.action.PwCheckActoin;
 import com.curi.action.PwUpdatePlayAction;
+import com.curi.action.ReplyDeleteAction;
 import com.curi.action.ReplyInsertAction;
+import com.curi.action.ReplyUpdateAction;
 
 /**
  * Servlet implementation class BizpollFrontController
@@ -172,6 +174,12 @@ public class BizpollFrontController extends HttpServlet {
 			forward = action.excute(request, response);
 		}else if(command.equals("/replyInsert.bizpoll")) {
 			action =new ReplyInsertAction();
+			forward = action.excute(request, response);
+		}else if(command.equals("/replydelete.bizpoll")) {
+			action =new ReplyDeleteAction();
+			forward = action.excute(request, response);
+		}else if(command.equals("/replyUpdate.bizpoll")) {
+			action =new ReplyUpdateAction();
 			forward = action.excute(request, response);
 		}			
 		

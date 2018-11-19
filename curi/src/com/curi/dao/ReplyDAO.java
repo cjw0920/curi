@@ -58,4 +58,17 @@ public class ReplyDAO {
 			sqlSession.close();
 		}
 	}
+	
+	public void replyUpdate(ReplyDTO rDto){
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.update("replyUpdate",rDto);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
 }

@@ -175,4 +175,31 @@ public class BoardDAO {
 		return result;
 	}
 	
+	
+	
+	public void boardReplyCntPlus(int bno) {
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.update("rpPlus",bno);
+			sqlSession.commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	
+	public void boardReplyCntMinus(int bno) {
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.update("rpMinus",bno);
+			sqlSession.commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
 }

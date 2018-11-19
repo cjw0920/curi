@@ -10,25 +10,19 @@ import com.curi.dao.BoardDAO;
 import com.curi.dao.ReplyDAO;
 import com.curi.dto.ReplyDTO;
 
-public class ReplyInsertAction implements Action{
+public class ReplyUpdateAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-
-		int bno =Integer.parseInt(request.getParameter("re_bno"));
-		String writer =request.getParameter("re_writer");
-		String content =request.getParameter("login_input");
-		System.out.println(bno+","+writer+","+content);
+		int rno = Integer.parseInt(request.getParameter("rno"));
+		String content = request.getParameter("content");
+		System.out.println(rno+","+content);
 		
-		ReplyDTO rDto = new ReplyDTO(content, writer, bno);
+		ReplyDTO rDto = new ReplyDTO(rno,content);
 		ReplyDAO rDao = ReplyDAO.getInstance();
 		
-		rDao.replyInsert(rDto);
-		
-		BoardDAO bDao = BoardDAO.getInstance();
-		bDao.boardReplyCntPlus(bno);
+		rDao.replyUpdate(rDto);
 		
 		return null;
 	}
