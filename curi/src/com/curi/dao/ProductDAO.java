@@ -7,10 +7,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.curi.common.DBManager;
+import com.curi.dto.BoardDTO;
 import com.curi.dto.ProductDTO;
 import com.curi.mybatis.SqlMapConfig;
 
@@ -82,6 +85,27 @@ public class ProductDAO {
 			return newlist;
 		}
 	
+		
+		
+		public ProductDTO ProductDetailView(String p_code) {
+			
+			sqlSession = sqlSessionFactory.openSession();
+			ProductDTO pDto = null;
+			try {
+				
+				pDto = sqlSession.selectOne("ProductDetailView",p_code);
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+			return pDto;
+		}
+		
+		
+		
+		
 	/*Mybatis 사용하기전 DBManager와 Prepare Statement 방식으로 구현한 DAO 객체
 
 	Connection conn = null;

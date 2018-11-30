@@ -88,7 +88,7 @@ public class BoardDAO {
 		return bDto;
 	}
 	
-	public void ViewCnt(String bno,HttpSession	countSession) {
+	public void ViewCnt(String bno,HttpSession countSession) {
 		
 		sqlSession = sqlSessionFactory.openSession();
 		
@@ -117,15 +117,11 @@ public class BoardDAO {
 			//session저장소
 			//read_time_50이라는 방을 하나 만들고
 			//현재 시간을 저장(10시 30분 5초)
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			sqlSession.close();
 		}
-		
-		
 	}
 	
 	public int boardInsert(BoardDTO bDto) {

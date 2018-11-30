@@ -23,6 +23,14 @@
 		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_indate DESC) WHERE ROWNUM<=4]]>
 	</select>
 	
+	<select id="ProductDetailView" resultType="com.curi.dto.ProductDTO">
+		
+		<![CDATA[SELECT * FROM curi_product
+				 WHERE p_code = #{p_code}]]>
+	</select>	
+	
+	
+	
 	<!-- ========================================================== -->
 	<!-- member dao -->
 	
@@ -142,7 +150,6 @@
 		
 	</update>
 	
-	
 	<insert id="boardInsert" parameterType="com.curi.dto.BoardDTO">
 	
 		 
@@ -223,5 +230,8 @@
 		UPDATE curireply SET content = #{content}
 		WHERE rno = #{rno}
 	</update>
+	
+	<!-- ========================================================== -->
+	
 	
 </mapper>

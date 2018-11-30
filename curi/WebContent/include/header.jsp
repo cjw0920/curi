@@ -467,9 +467,11 @@ $(document).on("click","#myBtn", function(){
 			<div id="header_line3">
 				<div id="header_line3_in">
 					<ul id="header_line3_ul">
-						<li><a href="<%=path%>/new_tem.jsp">NEW</a></li>
-						<li><a href="<%=path%>/sale_tem.jsp">SALE</a></li>
-						<li><a href="<%=path%>/earring_tem.jsp">EARRING</a>
+						<li><a href="<%=path%>/new_tem.bizpoll">New</a>
+						
+						<li><a href="<%=path%>/sale_tem.bizpoll">SALE</a>
+						
+						<li><a href="<%=path%>/earring_tem.bizpoll">EARRING</a>
 						
 							<div id="earring">
 								<a href="">링 귀걸이</a>
@@ -478,13 +480,13 @@ $(document).on("click","#myBtn", function(){
 							</div>
 							
 						</li>			
-						<li><a href="<%=path%>/necklace_tem.jsp">NECKLACE</a></li>
+						<li><a href="<%=path%>/necklace_tem.bizpoll">NECKLACE</a></li>
 						
-						<li><a href="<%=path%>/ring_tem.jsp">RING</a></li>
+						<li><a href="<%=path%>/ring_tem.bizpoll">RING</a></li>
 						
-						<li><a href="<%=path%>/bracelet_tem.jsp">BRACELET</a></li>
-						
-						<li><a href="<%=path%>/set_tem.jsp">SET</a></li>
+						<li><a href="<%=path%>/bracelet_tem.bizpoll">BRACELET</a></li>
+
+						<li><a href="<%=path%>/set_tem.bizpoll">SET</a></li>
 						
 						<li><a href="<%=path%>/boardList.bizpoll">게시판</a></li>
 						

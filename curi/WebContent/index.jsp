@@ -74,6 +74,9 @@ p {
 	margin-right: 15px;
 }
 
+a{
+	color : black;
+}
 
 </style>
 
@@ -120,12 +123,12 @@ p {
 						<!-- c:forEach : JSTL 태그 -->
 						<!-- ${bestlist} : EL 태그 -->
 						<c:forEach items="${bestlist}" var="bestDto">
-							<td><img src="img/${bestDto.p_img}" class="best_item"></td>
+							<td><a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}"><img src="img/${bestDto.p_img}" class="best_item"></a></td>
 						</c:forEach>
 					</tr>
 					<tr>
 						<c:forEach items="${bestlist}" var="bestDto">
-							<td><span>${bestDto.p_name}</span></td>
+							<td><a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}"><span>${bestDto.p_name}</span></a></td>
 						</c:forEach>
 					</tr>
 					<tr>
@@ -133,7 +136,7 @@ p {
 							<%-- <td><span>${bestDto.p_price}</span></td> --%>
 							<%-- <fmt:setLocale value="ja_jp"/>--일본
 							<fmt:setLocale value="ko_kr"/>--한국 --%>
-							<td><span><fmt:formatNumber value="${bestDto.p_price}"/></span></td>
+							<td><a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}"><span><fmt:formatNumber value="${bestDto.p_price}"/></span></a></td>
 						</c:forEach>
 					</tr>
 				</tbody>
@@ -149,17 +152,17 @@ p {
 						<!-- c:forEach : JSTL 태그 -->
 						<!-- ${bestlist} : EL 태그 -->
 						<c:forEach items="${newlist}" var="newDto">
-							<td><img src="img/${newDto.p_img}" class="best_item"></td>
+							<td><a href="productViewcnt.bizpoll?p_code=${newDto.p_code}"><img src="img/${newDto.p_img}" class="best_item"></a></td>
 						</c:forEach>
 					</tr>
 					<tr>
 						<c:forEach items="${newlist}" var="newDto">
-							<td><span>${newDto.p_name}</span></td>
+							<td><a href="productViewcnt.bizpoll?p_code=${newDto.p_code}"><span>${newDto.p_name}</span></a></td>
 						</c:forEach>
 					</tr>
 					<tr>
 						<c:forEach items="${newlist}" var="newDto">
-							<td><span><fmt:formatNumber value="${newDto.p_price}"/></span></td>
+							<td><a href="productViewcnt.bizpoll?p_code=${newDto.p_code}"><span><fmt:formatNumber value="${newDto.p_price}"/></span></a></td>
 						</c:forEach>
 					</tr>
 				</tbody>

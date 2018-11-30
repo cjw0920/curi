@@ -161,7 +161,7 @@ select {
 		<div id="img_tle">
 
 			<div id="img_con">
-				<img alt="" src="img/earring_item/1.jpg" id="item">
+				<img src="img/${productview.p_img}" id="item">
 			</div>
 
 		</div>
@@ -172,14 +172,14 @@ select {
 				<tbody>
 					<tr>
 						<th>상품명</th>
-						<td>1</td>
+						<td>${productview.p_name}</td>
 					</tr>
 
 					<tr class="both"></tr>
 
 					<tr>
 						<th>가격</th>
-						<td>14000원</td>
+						<td><fmt:formatNumber value="${productview.p_price}"/>원</td>
 
 					</tr>
 					<tr class="both"></tr>
@@ -215,7 +215,7 @@ select {
 			<hr>
 			<div id="price_all">
 				<div id="price_con">
-					<span>total : 14000</span><span>원</span>
+					<span>total : <fmt:formatNumber value="${productview.p_price}"/></span><span>원</span>
 				</div>
 			</div>
 			<div id="finish_btn">
