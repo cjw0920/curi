@@ -327,21 +327,29 @@
 			<button id="close_btn">X</button>
 		</div>
 		<div id="sidebar_content">
-			<a href="index.jsp" id="home">Home</a>
+			<a href="index.bizpoll" id="home">Home</a>
 			
 			<div id="mypage_dropdown">
 				<a href="#" id=side_mypade>MY PAGE</a>
-				<div id="mypage">
-					<a href="login_main.jsp">login</a>
-					<a href="constract.jsp">join</a>
-				</div>
+				<c:choose>
+					<c:when test="${empty sessionScope.loginUser}">
+						<div id="mypage">
+							<a href="login_main.bizpoll">Login</a>
+							<a href="constract.bizpoll">Join</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div id="mypage">
+							<a href="loginOut.bizpoll">LogOut</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			
 			<div id="dropdown_wrap">
 				<a href="#" id="dropdown">상품 ▼</a>
 				<div id="list">
-					<a href="new_tem.jsp">NEW</a>
-					<a href="sale_tem.jsp">SALE</a>
+					<a href="new_tem.bizpoll">NEW</a>
 					<a href="earring_tem.jsp">EARRING</a>
 					<a href="necklace_tem.jsp">NECKLACE</a>
 					<a href="ring_tem.jsp">RING</a>

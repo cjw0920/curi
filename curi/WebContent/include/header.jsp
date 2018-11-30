@@ -424,11 +424,7 @@ $(document).on("click","#myBtn", function(){
 								<li><a href="constract.bizpoll">회원가입</a></li>
 							</c:when>
 							<c:otherwise>
-								<li id="user">
-									${sessionScope.loginUser.name}
-									(${sessionScope.loginUser.id})님
-								</li>
-								<li><a href="loginOut.bizpoll">로그아웃</a></li>
+								<a href="loginOut.bizpoll">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
 						<li>
@@ -469,8 +465,6 @@ $(document).on("click","#myBtn", function(){
 				<div id="header_line3_in">
 					<ul id="header_line3_ul">
 						<li><a href="<%=path%>/new_tem.bizpoll">New</a>
-						
-						<li><a href="<%=path%>/sale_tem.bizpoll">SALE</a>
 						
 						<li><a href="<%=path%>/earring_tem.bizpoll">EARRING</a>
 						

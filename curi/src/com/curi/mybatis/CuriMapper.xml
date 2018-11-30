@@ -7,18 +7,11 @@
 <mapper namespace="com/curi/mybatis/CuriMapper.xml">
 
 
-
-
-
-	<!-- product dao -->
+	<!-- Index -->
 	<select id="bestView" resultType="com.curi.dto.ProductDTO">
 		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_purchasecnt DESC) WHERE ROWNUM<=4]]>
 	</select>
-	
-	
-	
-	
-	<!-- product dao -->
+
 	<select id="newView" resultType="com.curi.dto.ProductDTO">
 		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_indate DESC) WHERE ROWNUM<=4]]>
 	</select>
@@ -27,8 +20,12 @@
 		
 		<![CDATA[SELECT * FROM curi_product
 				 WHERE p_code = #{p_code}]]>
-	</select>	
-	
+	</select>
+		
+		
+		
+		
+	<!-- NewPage -->
 	<select id="new_BestView" resultType="com.curi.dto.ProductDTO">
 		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_indate DESC) WHERE ROWNUM<=3]]>
 	</select>
@@ -46,8 +43,62 @@
 	</select>
 	
 	
+	
+	<!-- EARRING PAGE -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- NECKLACE PAGE -->
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- RING PAGE -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- BRACELET PAGE -->
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- SET PAGE -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- ========================================================== -->
-	<!-- member dao -->
+	<!-- 회원관련 동작 -->
 	
 	<insert id="inserMember" parameterType="com.curi.dto.MemberDTO">
 		INSERT INTO member(id, pw, name, phone, zipcode, addr1, addr2, email) 
@@ -82,7 +133,7 @@
 	
 	<!-- ========================================================== -->
 	
-	<!-- Board -->
+	<!-- 게시판 관련 동작 -->
 	
 	<select id="countPaging" resultType="int">
 		<![CDATA[SELECT count(bno) FROM curiboard WHERE bno > 0 ]]>
@@ -210,7 +261,7 @@
 	
 	<!-- ========================================================== -->
 	
-	<!-- Reply -->
+	<!-- 댓글 -->
 	<select id="replyListAll" parameterType="String" resultType="com.curi.dto.ReplyDTO">
 		SELECT * FROM curireply
 		WHERE bno = #{bno}
