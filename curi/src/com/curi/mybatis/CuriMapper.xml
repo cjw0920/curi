@@ -29,6 +29,21 @@
 				 WHERE p_code = #{p_code}]]>
 	</select>	
 	
+	<select id="new_BestView" resultType="com.curi.dto.ProductDTO">
+		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_indate DESC) WHERE ROWNUM<=3]]>
+	</select>
+	
+	<select id="new_ListView1" resultType="com.curi.dto.ProductDTO">
+		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_indate DESC) WHERE ROWNUM<=4]]>
+	</select>
+	
+	 <select id="new_ListView2" resultType="com.curi.dto.ProductDTO">
+		<![CDATA[SELECT * FROM (SELECT ROWNUM numrow, aa.* FROM(SELECT * FROM curi_product ORDER BY p_indate DESC)aa) WHERE numrow > 4 and numrow <= 8]]>
+	</select>
+	
+	<select id="new_ListView3" resultType="com.curi.dto.ProductDTO">
+		<![CDATA[SELECT * FROM (SELECT ROWNUM numrow, aa.* FROM(SELECT * FROM curi_product ORDER BY p_indate DESC)aa) WHERE numrow > 8 and numrow <= 12]]>
+	</select>
 	
 	
 	<!-- ========================================================== -->

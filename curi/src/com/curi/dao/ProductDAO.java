@@ -86,7 +86,98 @@ public class ProductDAO {
 		}
 	
 		
+		//신상품페이지 best1~3
+		public List<ProductDTO> new_BestView(){
+			
+			sqlSession = sqlSessionFactory.openSession();
+			List<ProductDTO> new_BestList = null;
+			
+			
+			try {
+				
+				new_BestList = sqlSession.selectList("new_BestView");
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+			
+			
+			return new_BestList;
+		}
 		
+		//신상품페이지 1~4
+				public List<ProductDTO> new_ListView1(){
+					
+					sqlSession = sqlSessionFactory.openSession();
+					List<ProductDTO> new_BestList = null;
+					
+					
+					try {
+						
+						new_BestList = sqlSession.selectList("new_ListView1");
+						
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally {
+						sqlSession.close();
+					}
+					
+					
+					return new_BestList;
+				}
+		
+		
+				//신상품페이지 5~8
+				public List<ProductDTO> new_ListView2(){
+					
+					sqlSession = sqlSessionFactory.openSession();
+					List<ProductDTO> new_BestList = null;
+					
+					
+					try {
+						
+						new_BestList = sqlSession.selectList("new_ListView2");
+						
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally {
+						sqlSession.close();
+					}
+					
+					
+					return new_BestList;
+				}		
+				
+				//신상품페이지 9~12
+				public List<ProductDTO> new_ListView3(){
+					
+					sqlSession = sqlSessionFactory.openSession();
+					List<ProductDTO> new_BestList = null;
+					
+					
+					try {
+						
+						new_BestList = sqlSession.selectList("new_ListView3");
+						
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally {
+						sqlSession.close();
+					}
+					
+					
+					return new_BestList;
+				}	
+				
+				
+		
+		//상품 Detail 페이지 
 		public ProductDTO ProductDetailView(String p_code) {
 			
 			sqlSession = sqlSessionFactory.openSession();
