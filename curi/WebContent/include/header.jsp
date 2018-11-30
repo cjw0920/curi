@@ -380,6 +380,7 @@
           bottom: -50px;
           text-align: center;
           font-size: 12px;
+          cursor: pointer;
      }
      #myBtn:hover {
           background-color: #8C8C8C;

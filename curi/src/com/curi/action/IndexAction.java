@@ -16,7 +16,6 @@ public class IndexAction implements Action{
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		String url = "index.jsp";
 		

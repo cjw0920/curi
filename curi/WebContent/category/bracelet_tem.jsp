@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-  <%@ include file="include/sidenav_menu.jsp" %>     
+  <%@ include file="../include/sidenav_menu.jsp" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@ body{
 }
 
 
-#best_set_table{
+#best_bracelet_table{
  	margin:0;
 	padding:0;
 	margin: 0 auto;
@@ -31,11 +31,11 @@ body{
 	border-bottom: 4px double #E2E3E4;
 	padding-bottom:10px; 
 }
-#set_item_body{
+#bracelet_item_body{
 	padding-left: 180px;
 }
 
-#best_set_item_page_all{
+#best_bracelet_item_page_all{
 	margin: 0 auto;
 }
 
@@ -49,7 +49,7 @@ body{
 	padding-bottom: 10px;
 }
 
-#best_set_item_page{
+#best_bracelet_item_page{
 	display : inline-block;
 	width : 80%;
 	border-bottom: 1px solid #ccc;
@@ -57,7 +57,7 @@ body{
 	margin: 0 auto;
 	margin-left:10%
 }
-.setpage_img{
+.braceletpage_img{
 	width: 250px;
 	height: 350px;
 }
@@ -67,7 +67,7 @@ body{
 	margin-right: 30px;
 }
 
-#select_set_item{
+#select_bracelet_item{
 	float : right;
 	margin-top : 5px;
 	margin-right : 10%;
@@ -75,18 +75,18 @@ body{
 	height: 30px;
 }
 
-#set_item_all{
+#bracelet_item_all{
 	display: inline-block;
 	margin: 0 17%;
 }
 
 
-.setpage1_img{
+.braceletpage1_img{
 	width: 200px;
 	height: 275px;
 }
 
-#set_item_table div{
+#bracelet_item_table div{
 	margin: 30px;
 	text-align: center;
 }
@@ -95,41 +95,42 @@ body{
 </style>
 <script type="text/javascript"></script>
 </head>
-<body id="set_item_body">
-	<div id="best_set_item_page_all">
-	<p id="title"> SET </p>
-		<div id="best_set_item_page">
+<body id="bracelet_item_body">
+
+	<div id="best_bracelet_item_page_all">
+		<p id="title"> bracelet </p>
+		<div id="best_bracelet_item_page">
 			<p id="top3">Top 3</p>
-			<table id="best_set_table">
+			<table id="best_bracelet_table">
 				<tbody>
 					<tr>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/1.gif" class="setpage_img">
+								<img alt="" src="img/bracelet_item/1.jpg" class="braceletpage_img">
 								<h4>
-									셀레나 목걸이 세트
+									앨리 12탄생화 팔찌
 								</h4>
-								<h5>15,800원</h5>
+								<h5>13,000원</h5>
 							</div>
 						</td>
 						
 						<td>
 							<div>
-								<img alt="" src="img/set_item/2.gif" class="setpage_img" id="img2">
+								<img alt="" src="img/bracelet_item/2.jpg" class="braceletpage_img" id="img2">
 								<h4>
-									꿈의조각 귀걸이&목걸이 세트
+									화이트문 팔찌
 								</h4>
-								<h5>18,500원</h5>
+								<h5>23,500원</h5>
 							</div>
 						</td>
 						
 						<td>
 							<div>
-								<img alt="" src="img/set_item/3.gif" class="setpage_img">
+								<img alt="" src="img/bracelet_item/3.jpg" class="braceletpage_img">
 								<h4>
-									빛을담아 반지 8개1세트
+									사랑의 속삭임:뮤즈 팔찌
 								</h4>
-								<h5>10,500원</h5>
+								<h5>12,000원</h5>
 							</div>
 						</td>
 					</tr>
@@ -139,52 +140,52 @@ body{
 			</table>
 
 		</div>
-		<select id="select_set_item">
+		<select id="select_bracelet_item">
 			<option>정렬기준</option>
 			<option>최신순</option>
 			<option>인기순</option>
 			<option>가격 낮은 순</option>
 			<option>가격 높은 순</option>
 		</select>
-		<div id="set_item_all">
-			<table id="set_item_table">
+		<div id="bracelet_item_all">
+			<table id="bracelet_item_table">
 				<tbody>
 					<tr>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/1.gif" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/1.jpg" class="braceletpage1_img">
 								<h4>
-									셀레나 목걸이 세트
+									앨리 12탄생화 팔찌
 								</h4>
-								<h5>15,800원</h5>
+								<h5>13,000원</h5>
 							</div>
 						</td>
 						
 						<td>
 							<div>
-								<img alt="" src="img/set_item/2.gif" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/2.jpg" class="braceletpage1_img">
 								<h4>
-									꿈의조각 귀걸이&목걸이 세트
+									화이트문 팔찌
 								</h4>
-								<h5>18,500원</h5>
+								<h5>23,500원</h5>
 							</div>
 						</td>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/3.gif" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/3.jpg" class="braceletpage1_img">
 								<h4>
-									빛을담아 반지 8개1세트
+									사랑의 속삭임:뮤즈 팔찌
 								</h4>
-								<h5>10,500원</h5>
+								<h5>12,000원</h5>
 							</div>
 						</td>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/4.gif" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/4.gif" class="braceletpage1_img">
 								<h4>
-									샤인올데이 earring/ring
+									뷰티풀러브 루비 초커&팔찌 SET
 								</h4>
-								<h5>11,500원</h5>
+								<h5>20,500원</h5>
 							</div>
 						</td>
 					</tr>
@@ -192,76 +193,76 @@ body{
 					<tr>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/5.gif" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/5.jpg" class="braceletpage1_img">
 								<h4>
-									팔레트choker
+									사랑의속삭임:뮤즈 bangle
 								</h4>
-								<h5>9,000원</h5>
+								<h5>14,000원</h5>
 							</div>
 						</td>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/6.gif" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/6.jpg" class="braceletpage1_img">
 								<h4>
-									별을담다 earring
+									[무궁화] 일편단심1 팔찌
 								</h4>
-								<h5>9,000원</h5>
+								<h5>13,500원</h5>
 							</div>
 						</td>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/7.jpg" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/7.jpg" class="braceletpage1_img">
 								<h4>
-									에이미 ring 
+									딜루아 12탄생석 bracelet
 								</h4>
-								<h5>9,000원</h5>
+								<h5>5,000원</h5>
 							</div>
 						</td>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/8.jpg" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/8.jpg" class="braceletpage1_img">
 								<h4>
-									나타샤 earring SET
+									달콤한 여행 bracelet
 								</h4>
-								<h5>9,000원</h5>
+								<h5>12,500원</h5>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/9.jpg" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/9.jpg" class="braceletpage1_img">
 								<h4>
-									파리에서 earring SET
+									벨라 투 하트 bracelet
 								</h4>
-								<h5>9,500원</h5>
+								<h5>9,000원</h5>
 							</div>
 						</td>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/10.jpg" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/10.gif" class="braceletpage1_img">
 								<h4>
-									달의 왈츠 earring
+									세라 12탄생석 팔찌
 								</h4>
-								<h5>8,500원</h5>
+								<h5>12,000원</h5>
 							</div>
 						</td>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/11.jpg" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/11.gif" class="braceletpage1_img">
 								<h4>
-									모네르 귀걸이,이어커프 SET
+									베티 탄생석 bracelet
 								</h4>
-								<h5>9,800원</h5>
+								<h5>4,500원</h5>
 							</div>
 						</td>
 						<td>
 							<div>
-								<img alt="" src="img/set_item/12.jpg" class="setpage1_img">
+								<img alt="" src="img/bracelet_item/12.jpg" class="braceletpage1_img">
 								<h4>
-									아미띠에 너클링 Set
+									달의여신 루나 팔찌
 								</h4>
-								<h5>15,000원</h5>
+								<h5>12,000원</h5>
 							</div>
 						</td>
 					</tr>					
