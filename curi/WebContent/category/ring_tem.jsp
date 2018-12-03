@@ -91,6 +91,10 @@ body{
 	text-align: center;
 }
 
+a{
+	text-decoration: none;
+	color: black;
+}
 
 </style>
 <script type="text/javascript"></script>
@@ -103,40 +107,21 @@ body{
 			<p id="top3">Top 3</p>
 			<table id="best_ring_table">
 				<tbody>
-					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/1.jpg" class="ringpage_img">
-								<h4>
-									홀리데이 러브 반지
-								</h4>
-								<h5>12,000원</h5>
-							</div>
-						</td>
-						
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/2.jpg" class="ringpage_img" id="img2">
-								<h4>
-									사랑의속삭임 : 뮤즈 반지
-								</h4>
-								<h5>18,500원</h5>
-							</div>
-						</td>
-						
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/3.gif" class="ringpage_img">
-								<h4>
-									앨리탄생화2 반지
-								</h4>
-								<h5>11,000원</h5>
-							</div>
-						</td>
+					<c:forEach items="${BestList}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="ringpage_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
 					</tr>
-					
 				</tbody>
-
 			</table>
 
 		</div>
@@ -151,123 +136,51 @@ body{
 			<table id="ring_item_table">
 				<tbody>
 					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/1.jpg" class="ringpage1_img">
-								<h4>
-									홀리데이 러브 반지
-								</h4>
-								<h5>12,000원</h5>
-							</div>
-						</td>
-						
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/2.jpg" class="ringpage1_img">
-								<h4>
-									사랑의속삭임 : 뮤즈 반지
-								</h4>
-								<h5>18,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/3.gif" class="ringpage1_img">
-								<h4>
-									앨리탄생화2 반지
-								</h4>
-								<h5>11,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/4.gif" class="ringpage1_img">
-								<h4>
-									릴리블라썸 반지
-								</h4>
-								<h5>11,500원</h5>
-							</div>
-						</td>
-					</tr>
-					
-					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/5.jpg" class="ringpage1_img">
-								<h4>
-									엘라 레이어드ring
-								</h4>
-								<h5>3,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/6.gif" class="ringpage1_img">
-								<h4>
-									빛을담아 반지 8개1세트
-								</h4>
-								<h5>10,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/7.jpg" class="ringpage1_img">
-								<h4>
-									달의여신, 루나 반지
-								</h4>
-								<h5>12,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/8.gif" class="ringpage1_img">
-								<h4>
-									샤이닝 하트 ring
-								</h4>
-								<h5>11,500원</h5>
-							</div>
-						</td>
+						<c:forEach items="${List1}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="ringpage1_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
 					</tr>
 					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/9.jpg" class="ringpage1_img">
-								<h4>
-									이오 ring
-								</h4>
-								<h5>5,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/10.jpg" class="ringpage1_img">
-								<h4>
-									은하수:밀키웨이Ⅱ ring
-								</h4>
-								<h5>8,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/11.jpg" class="ringpage1_img">
-								<h4>
-									안느 knuckle ring
-								</h4>
-								<h5>6,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/ring_item/12.jpg" class="ringpage1_img">
-								<h4>
-									사랑의 속삭임 ring
-								</h4>
-								<h5>10,000원</h5>
-							</div>
-						</td>
+						<c:forEach items="${List2}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="ringpage1_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
+					</tr>
+					<tr>
+						<c:forEach items="${List3}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="ringpage1_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
 					</tr>					
 				</tbody>
-
 			</table>
 		</div>		
 	</div>

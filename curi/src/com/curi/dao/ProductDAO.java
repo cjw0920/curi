@@ -49,7 +49,7 @@ public class ProductDAO {
 		
 		try {
 			
-			bestlist = sqlSession.selectList("bestView");
+			bestlist = sqlSession.selectList("bestView1");
 			
 			
 		} catch (Exception e) {
@@ -174,6 +174,104 @@ public class ProductDAO {
 					
 					return new_BestList;
 				}	
+				
+
+				
+				
+				
+				
+				
+				//카테고리페이지 best1~3
+				public List<ProductDTO> BestView(String keyword){
+					
+					sqlSession = sqlSessionFactory.openSession();
+					List<ProductDTO> new_BestList = null;
+					
+					
+					try {
+						new_BestList = sqlSession.selectList("BestView",keyword);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally {
+						sqlSession.close();
+					}
+					
+					
+					return new_BestList;
+				}
+				
+				//카테고리페이지 1~4
+						public List<ProductDTO> ListView1(String keyword){
+							
+							sqlSession = sqlSessionFactory.openSession();
+							List<ProductDTO> new_BestList = null;
+							
+							
+							try {
+								
+								new_BestList = sqlSession.selectList("ListView1",keyword);
+								
+								
+							} catch (Exception e) {
+								e.printStackTrace();
+							}finally {
+								sqlSession.close();
+							}
+							
+							
+							return new_BestList;
+						}
+				
+				
+						//카테고리페이지 5~8
+						public List<ProductDTO> ListView2(String keyword){
+							
+							sqlSession = sqlSessionFactory.openSession();
+							List<ProductDTO> new_BestList = null;
+							
+							
+							try {
+								
+								new_BestList = sqlSession.selectList("ListView2",keyword);
+								
+								
+							} catch (Exception e) {
+								e.printStackTrace();
+							}finally {
+								sqlSession.close();
+							}
+							
+							
+							return new_BestList;
+						}		
+						
+						//카테고리페이지 9~12
+						public List<ProductDTO> ListView3(String keyword){
+							
+							sqlSession = sqlSessionFactory.openSession();
+							List<ProductDTO> new_BestList = null;
+							
+							
+							try {
+								
+								new_BestList = sqlSession.selectList("ListView3",keyword);
+								
+								
+							} catch (Exception e) {
+								e.printStackTrace();
+							}finally {
+								sqlSession.close();
+							}
+							
+							
+							return new_BestList;
+						}	
+						
+				
+				
+				
+				
 				
 				
 		

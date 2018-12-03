@@ -91,6 +91,11 @@ body{
 	text-align: center;
 }
 
+a{
+	text-decoration: none;
+	color : black;
+}
+
 
 </style>
 <script type="text/javascript"></script>
@@ -99,47 +104,30 @@ body{
 
 	<div id="best_bracelet_item_page_all">
 		<p id="title"> bracelet </p>
+		
 		<div id="best_bracelet_item_page">
 			<p id="top3">Top 3</p>
 			<table id="best_bracelet_table">
 				<tbody>
 					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/1.jpg" class="braceletpage_img">
-								<h4>
-									앨리 12탄생화 팔찌
-								</h4>
-								<h5>13,000원</h5>
-							</div>
-						</td>
-						
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/2.jpg" class="braceletpage_img" id="img2">
-								<h4>
-									화이트문 팔찌
-								</h4>
-								<h5>23,500원</h5>
-							</div>
-						</td>
-						
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/3.jpg" class="braceletpage_img">
-								<h4>
-									사랑의 속삭임:뮤즈 팔찌
-								</h4>
-								<h5>12,000원</h5>
-							</div>
-						</td>
+						<c:forEach items="${BestList}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="braceletpage_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
 					</tr>
-					
 				</tbody>
-
 			</table>
-
 		</div>
+		
 		<select id="select_bracelet_item">
 			<option>정렬기준</option>
 			<option>최신순</option>
@@ -151,120 +139,49 @@ body{
 			<table id="bracelet_item_table">
 				<tbody>
 					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/1.jpg" class="braceletpage1_img">
-								<h4>
-									앨리 12탄생화 팔찌
-								</h4>
-								<h5>13,000원</h5>
-							</div>
-						</td>
-						
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/2.jpg" class="braceletpage1_img">
-								<h4>
-									화이트문 팔찌
-								</h4>
-								<h5>23,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/3.jpg" class="braceletpage1_img">
-								<h4>
-									사랑의 속삭임:뮤즈 팔찌
-								</h4>
-								<h5>12,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/4.gif" class="braceletpage1_img">
-								<h4>
-									뷰티풀러브 루비 초커&팔찌 SET
-								</h4>
-								<h5>20,500원</h5>
-							</div>
-						</td>
-					</tr>
-					
-					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/5.jpg" class="braceletpage1_img">
-								<h4>
-									사랑의속삭임:뮤즈 bangle
-								</h4>
-								<h5>14,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/6.jpg" class="braceletpage1_img">
-								<h4>
-									[무궁화] 일편단심1 팔찌
-								</h4>
-								<h5>13,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/7.jpg" class="braceletpage1_img">
-								<h4>
-									딜루아 12탄생석 bracelet
-								</h4>
-								<h5>5,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/8.jpg" class="braceletpage1_img">
-								<h4>
-									달콤한 여행 bracelet
-								</h4>
-								<h5>12,500원</h5>
-							</div>
-						</td>
+						<c:forEach items="${List1}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="braceletpage1_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
 					</tr>
 					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/9.jpg" class="braceletpage1_img">
-								<h4>
-									벨라 투 하트 bracelet
-								</h4>
-								<h5>9,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/10.gif" class="braceletpage1_img">
-								<h4>
-									세라 12탄생석 팔찌
-								</h4>
-								<h5>12,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/11.gif" class="braceletpage1_img">
-								<h4>
-									베티 탄생석 bracelet
-								</h4>
-								<h5>4,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/bracelet_item/12.jpg" class="braceletpage1_img">
-								<h4>
-									달의여신 루나 팔찌
-								</h4>
-								<h5>12,000원</h5>
-							</div>
-						</td>
+						<c:forEach items="${List2}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="braceletpage1_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
+					</tr>
+					<tr>
+						<c:forEach items="${List3}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="braceletpage1_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
 					</tr>					
 				</tbody>
 

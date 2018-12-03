@@ -91,6 +91,10 @@ body{
 	text-align: center;
 }
 
+a{
+	text-decoration: none;
+	color : black;
+}
 
 </style>
 <script type="text/javascript"></script>
@@ -98,41 +102,24 @@ body{
 <body id="neck_item_body">
 
 	<div id="best_neck1_item_page_all">
-		<p id="title"> necklace </p>
+		<p id="title"> NECKLACE </p>
 		<div id="best_neck_item_page">
 			<p id="top3">Top 3</p>
 			<table id="best_neck_table">
 				<tbody>
-					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/11.jpg" class="neckpage_img">
-								<h4>
-									홀리데이 드림 귀걸이/귀찌
-								</h4>
-								<h5>12,500원</h5>
-							</div>
-						</td>
-						
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/2.gif" class="neckpage_img" id="img2">
-								<h4>
-									사랑의요정,엘 귀걸이/귀찌
-								</h4>
-								<h5>18,500원</h5>
-							</div>
-						</td>
-						
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/12.jpg" class="neckpage_img">
-								<h4>
-									떨리는마음 귀걸이/귀찌
-								</h4>
-								<h5>20,500원</h5>
-							</div>
-						</td>
+					<c:forEach items="${BestList}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="neckpage_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
 					</tr>
 					
 				</tbody>
@@ -151,123 +138,51 @@ body{
 			<table id="neck_item_table">
 				<tbody>
 					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/1.gif" class="neckpage1_img">
-								<h4>
-									셀레나 목걸이 세트
-								</h4>
-								<h5>15800원</h5>
-							</div>
-						</td>
-						
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/2.gif" class="neckpage1_img">
-								<h4>
-									사랑의요정,엘 목걸이
-								</h4>
-								<h5>12000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/3.gif" class="neckpage1_img">
-								<h4>
-									앨리 탄생화 목걸이
-								</h4>
-								<h5>20,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/4.jpg" class="neckpage1_img">
-								<h4>
-									비밀의정원 귀걸이/ 귀찌
-								</h4>
-								<h5>15,000원</h5>
-							</div>
-						</td>
-					</tr>
-					
-					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/5.gif" class="neckpage1_img">
-								<h4>
-									페어리드롭 귀걸이/귀찌
-								</h4>
-								<h5>15,800원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/6.gif" class="neckpage1_img">
-								<h4>
-									별빛랩소디 귀걸이/귀찌
-								</h4>
-								<h5>13,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/7.gif" class="neckpage1_img">
-								<h4>
-									러브판타지 귀걸이/귀찌
-								</h4>
-								<h5>19,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/8.gif" class="neckpage1_img">
-								<h4>
-									러브엔젤라 귀걸이/귀찌
-								</h4>
-								<h5>15,500원</h5>
-							</div>
-						</td>
+						<c:forEach items="${List1}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="neckpage1_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
 					</tr>
 					<tr>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/9.gif" class="neckpage1_img">
-								<h4>
-									너는꽃 귀걸이/귀찌
-								</h4>
-								<h5>15,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/10.gif" class="neckpage1_img">
-								<h4>
-									봄을그리다 귀걸이/ 귀찌
-								</h4>
-								<h5>10,500원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/11.jpg" class="neckpage1_img">
-								<h4>
-									럽미텔미 귀걸이/ 귀찌
-								</h4>
-								<h5>12,000원</h5>
-							</div>
-						</td>
-						<td>
-							<div>
-								<img alt="" src="img/necklace_item/12.jpg" class="neckpage1_img">
-								<h4>
-									메이릴리 ring
-								</h4>
-								<h5>8,500원</h5>
-							</div>
-						</td>
+						<c:forEach items="${List2}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="neckpage1_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
+					</tr>
+					<tr>
+						<c:forEach items="${List3}" var="bestDto">
+							<td>
+								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
+									<div>
+										<img alt="" src="img/${bestDto.p_img}" class="neckpage1_img">
+										<h4>
+											${bestDto.p_name}
+										</h4>
+										<h5><fmt:formatNumber value="${bestDto.p_price}"/>원</h5>
+									</div>
+								</a>
+							</td>
+						</c:forEach>
 					</tr>					
 				</tbody>
-
 			</table>
 		</div>		
 	</div>

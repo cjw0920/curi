@@ -8,7 +8,7 @@
 
 
 	<!-- Index -->
-	<select id="bestView" resultType="com.curi.dto.ProductDTO">
+	<select id="bestView1" resultType="com.curi.dto.ProductDTO">
 		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_purchasecnt DESC) WHERE ROWNUM<=4]]>
 	</select>
 
@@ -44,50 +44,51 @@
 	
 	
 	
-	<!-- EARRING PAGE -->
 	
 	
 	
+	<select id="BestView"  parameterType="String" resultType="com.curi.dto.ProductDTO">
+		<![CDATA[
+		SELECT * FROM (SELECT * FROM curi_product
+	                WHERE p_code>0
+	                AND P_IMG LIKE '%' || #{keyword}||'%' ORDER BY p_code DESC)
+	    WHERE ROWNUM<=3]]>
+	</select>
 	
 	
+	<select id="ListView1"  parameterType="String" resultType="com.curi.dto.ProductDTO">
+		<![CDATA[
+		SELECT * FROM (SELECT * FROM curi_product
+	                WHERE p_code>0
+	                AND P_IMG LIKE '%' || #{keyword} ||'%' ORDER BY p_code DESC) 
+	    WHERE ROWNUM<=4
+		]]>
+	</select>
+	
+	 <select id="ListView2"  parameterType="String" resultType="com.curi.dto.ProductDTO">
+		<![CDATA[
+		 SELECT * FROM (SELECT ROWNUM numrow, aa.* FROM(
+       		 SELECT * FROM (SELECT * FROM curi_product
+                WHERE p_code>0
+                AND P_IMG LIKE '%' || #{keyword} ||'%' ORDER BY p_code DESC)
+       		 )aa)
+         WHERE numrow > 4 and numrow <= 8
+		]]>
+	</select>
 	
 	
+	<select id="ListView3" parameterType="String" resultType="com.curi.dto.ProductDTO">
 	
+	<![CDATA[
+		 SELECT * FROM (SELECT ROWNUM numrow, aa.* FROM(
+       		 SELECT * FROM (SELECT * FROM curi_product
+                WHERE p_code>0
+                AND P_IMG LIKE '%' || #{keyword} ||'%' ORDER BY p_code DESC)
+       		 )aa)
+         WHERE numrow > 8 and numrow <= 12
+		]]>
 	
-	
-	<!-- NECKLACE PAGE -->
-	
-	
-	
-	
-	
-	
-	
-	
-	<!-- RING PAGE -->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!-- BRACELET PAGE -->
-	
-	
-	
-	
-	
-	
-	
-	
-	<!-- SET PAGE -->
-	
-	
-	
-	
+	</select>
 	
 	
 	

@@ -466,7 +466,7 @@ $(document).on("click","#myBtn", function(){
 					<ul id="header_line3_ul">
 						<li><a href="<%=path%>/new_tem.bizpoll">New</a>
 						
-						<li><a href="<%=path%>/earring_tem.bizpoll">EARRING</a>
+						<li><a href="<%=path%>/category.bizpoll?keyword=earring">EARRING</a>
 						
 							<div id="earring">
 								<a href="">링 귀걸이</a>
@@ -475,13 +475,13 @@ $(document).on("click","#myBtn", function(){
 							</div>
 							
 						</li>			
-						<li><a href="<%=path%>/necklace_tem.bizpoll">NECKLACE</a></li>
+						<li><a href="<%=path%>/category.bizpoll?keyword=necklace">NECKLACE</a></li>
 						
-						<li><a href="<%=path%>/ring_tem.bizpoll">RING</a></li>
+						<li><a href="<%=path%>/category.bizpoll?keyword=ring">RING</a></li>
 						
-						<li><a href="<%=path%>/bracelet_tem.bizpoll">BRACELET</a></li>
+						<li><a href="<%=path%>/category.bizpoll?keyword=bracelet">BRACELET</a></li>
 
-						<li><a href="<%=path%>/set_tem.bizpoll">SET</a></li>
+						<li><a href="<%=path%>/category.bizpoll?keyword=set">SET</a></li>
 						
 						<li><a href="<%=path%>/boardList.bizpoll">게시판</a></li>
 						

@@ -20,6 +20,7 @@ import com.curi.action.BoardSearchAction;
 import com.curi.action.BoardUpdateAction;
 import com.curi.action.BoardUpdatePlayAction;
 import com.curi.action.BoardViewcntAction;
+import com.curi.action.CategoryAction;
 import com.curi.action.CommemtDeleteAction;
 import com.curi.action.CommemtListAction;
 import com.curi.action.CommemtInsertAction;
@@ -188,6 +189,9 @@ public class BizpollFrontController extends HttpServlet {
 			forward = action.excute(request, response);
 		}else if(command.equals("/new_tem.bizpoll")) {
 			action =new New_ItemAction();
+			forward = action.excute(request, response);
+		}else if(command.equals("/category.bizpoll")) {
+			action =new CategoryAction();
 			forward = action.excute(request, response);
 		}
 		

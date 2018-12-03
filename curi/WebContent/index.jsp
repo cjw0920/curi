@@ -122,7 +122,7 @@ a{
 					<tr>
 						<!-- c:forEach : JSTL 태그 -->
 						<!-- ${bestlist} : EL 태그 -->
-						<c:forEach items="${bestlist}" var="bestDto">
+						<c:forEach items="${bestlist1}" var="bestDto">
 							<td>
 								<a href="productViewcnt.bizpoll?p_code=${bestDto.p_code}">
 									<div>
@@ -168,6 +168,7 @@ a{
 
 		</div>
 	</div>
+	
 </body>
 </html>
 <%@ include file="include/footer.jsp"%>

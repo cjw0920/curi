@@ -41,7 +41,7 @@ public class IndexAction implements Action{
 		
 		//View 단으로 전송할 데이터를 담는다.
 		//					(  "이름표"  ,   실제값   )
-		request.setAttribute("bestlist", bestList);
+		request.setAttribute("bestlist1", bestList);
 		request.setAttribute("newlist", newList);
 		
 		//ActionForward 객체 생성

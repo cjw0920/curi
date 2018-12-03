@@ -350,13 +350,14 @@
 				<a href="#" id="dropdown">상품 ▼</a>
 				<div id="list">
 					<a href="new_tem.bizpoll">NEW</a>
-					<a href="earring_tem.jsp">EARRING</a>
-					<a href="necklace_tem.jsp">NECKLACE</a>
-					<a href="ring_tem.jsp">RING</a>
-					<a href="bracelet_tem.jsp">BRACELET</a>
-					<a href="set_tem.jsp">SET</a>
+					<a href="category.bizpoll?keyword=earring">EARRING</a>
+					<a href="category.bizpoll?keyword=necklace">NECKLACE</a>
+					<a href="category.bizpoll?keyword=ring">RING</a>
+					<a href="category.bizpoll?keyword=bracelet">BRACELET</a>
+					<a href="category.bizpoll?keyword=set">SET</a>
 				</div>
 			</div>
+			<a href="boardList.bizpoll">게시판</a>
 
 		</div>
 	</div>
