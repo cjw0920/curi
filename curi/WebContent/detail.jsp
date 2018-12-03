@@ -153,7 +153,16 @@ select {
 }
 
 </style>
+<script type="text/javascript">
 
+$(document).ready(function(){
+	$("#cart").click(function(){
+		alert("장바구니에 담겼습니다.")
+	});
+	
+});
+
+</script>
 </head>
 <body id="indexbody">
 	<div id="all">
