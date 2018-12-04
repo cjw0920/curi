@@ -333,44 +333,6 @@ height: 25px;
 
 
 $(document).ready(function(){
-	
-	 
-	
-/* 	 
-		//경고창 출력
-	
-		 $(".input_join").blur(function(){
-		var inputVal = $(this).val();
-		if(inputVal ==""){
-			$(this).next(".br").css("display","block")
-			$(this).css("margin-bottom","0px");
-		}else{
-			$(this).next(".br").css("display","none")
-			$(this).css("margin-bottom","0px");
-		}
-		
-		
-	}); 
-	
-	//선행조건 : 둘다 값이 있을때만 동작, 비밀번호와 비밀번호 확인 값이 다를때 동작
-	//비밀번호와 확인이 다르면 메시지 코드 출력, 비밀번호 확인에 focus, 값을 초기화
-	 $(".checkpw").blur(function(){
-		var pw1 = $("#input_pw").val();
-		var pw2 = $("#input_rpw").val();
-		if(pw1 !=""&&pw2!=""){
-			if(pw1==pw2){
-				$(".checkpw").next().css("display","none");
-			}else{
-				$(this).focus();
-				$(this).next.css("display","block");
-				$(this).val("");
-			}
-		}
-	});  
-		 */ 
-	
-		
-	
 	 $("#input_name").focus(function(){
 		 $(this).css("font-size","17px");
 		 $("#insert_label1").css("bottom","25px").css("font-size","10px");

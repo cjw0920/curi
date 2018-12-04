@@ -12,21 +12,24 @@ body {
 	margin-left: 24%;
 }
 
+input{
+	outline: none;
+	border: 0px;
+}
+
 #indexbody {
 	padding-top: 100px;
 }
 
-#all {
+
+.all {
 	border: 1px solid #dadada;
 	width: 70%;
-	height: 600px;
 }
 
 #img_tle {
 	width: 49%;
-	border: 0.5px solid #dadada;
 	float: left;
-	height: 600px;
 }
 
 #img_con {
@@ -44,7 +47,6 @@ body {
 #detail {
 	margin-left: 50%;
 	width: 50%;
-	height: 430px;
 }
 
 /* table, th, td {
@@ -88,41 +90,40 @@ select {
 }
 
 
+#finish_btn{
+	margin: 9% 0;
+	margin-left: 10%;
+}
+
 #finish_btn>a{
 	text-align: center;
 	color: black;
 	display : inline-block;
-	font-size : 20px;
-	line-height: 49px;
-	
-	height: 60px;
+	font-size : 15px;
+	line-height: 80px;
+	height: 85px;
+	border-radius: 100%;
 }
 
-.choice{
-	margin-top: 10px;
+
+#finish_btn span{
+	text-align: center;
+	top : 5px;
 }
 
 #good{
-	display: inline;
-	width: 45%;
-	padding-right: 20px;
+	width: 20%;
 	background-color:#FFD8D8;
+	margin-top: 2px;
 }
 #good:hover{
 	background-color:#FFB9B9;
 }
 
 #soso{
+	margin-top: 2px;
 	background-color:#EAEAEA;
-	display: inline;
-	width: 45%;
-	padding-right: 20px;
-}
-#soso{
-	background-color:#EAEAEA;
-	display: inline;
-	width: 45%;
-	padding-right: 20px;
+	width: 20%;
 }
 
 #soso:hover{
@@ -131,8 +132,8 @@ select {
 
 
 #cart {
-	margin-top: 1px;
-	width: 99%;
+	margin-top: 2px;
+	width: 20%;
 	background-color: #FFe6e6;
     
 }
@@ -143,7 +144,7 @@ select {
 
 #sell {
 	margin-top: 2px;
-	width: 99%;
+	width: 20%;
 	background-color: #D4F4FA;
     
 }
@@ -152,7 +153,50 @@ select {
 	background-color: #B2EBF4;
 }
 
+#comment_list{
+	margin-top: 5%;
+	text-align: center;
+}
+
+#comment{
+	background-color: #d6ecfa;
+	padding: 20px 0;
+}
+
+#user_comment{
+	text-align: left;
+}
+
+#content{
+	width: 100%;
+}
+
+#user{
+	margin: 15px 0;
+    margin-left: 10px;
+}
+
+#user>input{
+    margin-left: 10px;
+}
+
+
+#inser_btn{
+    margin: 10px 0;
+    height: 40px;
+    line-height: 35px;
+	background-color: #D4F4FA;
+	width: 100px;
+	text-align: center;
+	float: right;
+	cursor: pointer;
+}
+#inser_btn:hover{
+	background-color: #B2EBF4;
+}
+
 </style>
+<script type="text/javascript" src="<%=path%>/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -165,76 +209,124 @@ $(document).ready(function(){
 </script>
 </head>
 <body id="indexbody">
-	<div id="all">
-
-		<div id="img_tle">
-
-			<div id="img_con">
-				<img src="img/${productview.p_img}" id="item">
-			</div>
-
-		</div>
-
-		<div id="detail">
-
-			<table id="table1">
-				<tbody>
-					<tr>
-						<th>상품명</th>
-						<td>${productview.p_name}</td>
-					</tr>
-
-					<tr class="both"></tr>
-
-					<tr>
-						<th>가격</th>
-						<td><fmt:formatNumber value="${productview.p_price}"/>원</td>
-
-					</tr>
-					<tr class="both"></tr>
-				</tbody>
-			</table>
-			<hr>
-
-
-			<table id="table2">
-				<tbody>
-					<tr>
-						<th>색상</th>
-						<td><select>
-								<option value="" selected="selected" id="sele1">색상선택</option>
-								<option value="gold">골드</option>
-								<option value="silver">실버</option>
-								<option value="pink">로즈골드</option>
-						</select></td>
-					</tr>
-
-					<tr class="both"></tr>
-
-					<tr>
-						<th>옵션</th>
-						<td><select>
-								<option value="" selected="selected" id="sele2">옵션선택</option>
-								<option value="short">귀찌</option>
-								<option value="long">귀걸이</option>
-						</select></td>
-					</tr>
-				</tbody>
-			</table>
-			<hr>
-			<div id="price_all">
-				<div id="price_con">
-					<span>total : <fmt:formatNumber value="${productview.p_price}"/></span><span>원</span>
+	<div id="front">
+		<div class="all">
+	
+			<div id="img_tle">
+	
+				<div id="img_con">
+					<img src="img/${productview.p_img}" id="item">
 				</div>
+	
 			</div>
-			<div id="finish_btn">
-				<a href="#" id="good" class="choice">찜하기 </a>
-				<a href="#" id="soso" class="choice">그저그래요 </a>
-				<a href="#" id="cart">장바구니 </a>
-				<a href="#" id="sell">결제 </a>
+	
+			<div id="detail">
+	
+				<table id="table1">
+					<tbody>
+						<tr>
+							<th>상품명</th>
+							<td>${productview.p_name}</td>
+						</tr>
+	
+						<tr class="both"></tr>
+	
+						<tr>
+							<th>가격</th>
+							<td><fmt:formatNumber value="${productview.p_price}"/>원</td>
+	
+						</tr>
+						<tr class="both"></tr>
+					</tbody>
+				</table>
+				<hr>
+	
+	
+				<table id="table2">
+					<tbody>
+						<tr>
+							<th>색상</th>
+							<td><select>
+									<option value="" selected="selected" id="sele1">색상선택</option>
+									<option value="gold">골드</option>
+									<option value="silver">실버</option>
+									<option value="pink">로즈골드</option>
+							</select></td>
+						</tr>
+	
+						<tr class="both"></tr>
+	
+						<tr>
+							<th>옵션</th>
+							<td><select>
+									<option value="" selected="selected" id="sele2">옵션선택</option>
+									<option value="short">귀찌</option>
+									<option value="long">귀걸이</option>
+							</select></td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+				<div id="price_all">
+					<div id="price_con">
+						<span>total : <fmt:formatNumber value="${productview.p_price}"/></span><span>원</span>
+					</div>
+				</div>
+				
+				
+				<div id="finish_btn">
+					
+					<a href="#" id="good"><div><span>찜하기</span></div></a>
+					<a href="#" id="soso"><div><span>흠..</span></div></a>
+					<a href="#" id="cart"><div><span>장바구니</span></div></a>
+					<a href="#" id="sell"><div><span>결제</span></div></a>
+				</div>
+				
+				
+				
+				
+				
 			</div>
+			
+			
 		</div>
-
 	</div>
+	
+	
+	
+	
+	
+	<div class="all" id="comment_list">
+		<div id="comment">상품평</div>
+		
+		<div id="user_comment">
+			<div id="user">작성자 :  <input readonly="readonly" id="writer" name="writer" value="${sessionScope.loginUser.id}"></div>
+			
+			<div>
+				<textarea id="content" name="content">${boardview.content}</textarea>
+				
+				<script type="text/javascript">
+					var oEditors=[];
+					nhn.husky.EZCreator.createInIFrame({
+						oAppRef: oEditors,
+						elPlaceHolder:"content",
+						sSkinURI:"<%=path%>/smarteditor/SmartEditor2Skin.html",
+						fCreator:"createSEditor2"
+					});
+				</script>	
+				
+			</div>
+			<a>
+				<div id="inser_btn">
+					등록
+				</div>
+			</a>
+		</div>
+	</div>
+	
+	
+		
+		
+		
 </body>
 </html>

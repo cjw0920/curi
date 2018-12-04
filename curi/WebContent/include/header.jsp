@@ -424,7 +424,7 @@ $(document).on("click","#myBtn", function(){
 								<li><a href="constract.bizpoll">회원가입</a></li>
 							</c:when>
 							<c:otherwise>
-								<a href="loginOut.bizpoll">로그아웃</a>
+								<li><a href="loginOut.bizpoll">로그아웃</a></li>
 							</c:otherwise>
 						</c:choose>
 						<li>
