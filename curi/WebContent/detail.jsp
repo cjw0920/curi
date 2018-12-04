@@ -156,6 +156,7 @@ select {
 #comment_list{
 	margin-top: 5%;
 	text-align: center;
+	margin-bottom: 10%;
 }
 
 #comment{

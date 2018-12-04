@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.curi.common.Constants;
 import com.curi.dao.BoardDAO;
 import com.curi.dao.ProductCommentDAO;
+import com.curi.dao.ReplyDAO;
 import com.curi.dto.BoardDTO;
 import com.curi.dto.ProductCommentDTO;
+import com.curi.dto.ReplyDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -30,6 +32,7 @@ public class ProductCommentInsertPlayAction implements Action{
 		String writer = multi.getParameter("writer");
 		String content = multi.getParameter("content");
 		
+		
 		System.out.println(p_code);
 		System.out.println(writer);
 		System.out.println(content);
@@ -39,9 +42,9 @@ public class ProductCommentInsertPlayAction implements Action{
 		ProductCommentDAO pDao = ProductCommentDAO.getInstance();
 		ProductCommentDTO pDto = new ProductCommentDTO(writer, content, p_code);
 		
+		System.out.println(pDto.toString());
 		
-		
-		
+		pDao.Insert(pDto);
 		
 		return null;
 	}

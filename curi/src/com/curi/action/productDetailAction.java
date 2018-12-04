@@ -25,7 +25,8 @@ public class productDetailAction implements Action{
 		
 		String url="detail.jsp";
 		
-		String p_code = request.getParameter("p_code");
+		int p_code = Integer.parseInt(request.getParameter("p_code"));
+		
 		System.out.println(p_code);
 		
 		ProductDAO pDao = ProductDAO.getInstance();
@@ -38,6 +39,7 @@ public class productDetailAction implements Action{
 		forward.setRedirect(false);
 		
 		return forward;
+		
 	}
 
 }

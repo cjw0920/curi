@@ -16,7 +16,7 @@
 		<![CDATA[SELECT * FROM (SELECT * FROM curi_product ORDER BY p_indate DESC) WHERE ROWNUM<=4]]>
 	</select>
 	
-	<select id="ProductDetailView" resultType="com.curi.dto.ProductDTO">
+	<select id="ProductDetailView" parameterType="int" resultType="com.curi.dto.ProductDTO">
 		
 		<![CDATA[SELECT * FROM curi_product
 				 WHERE p_code = #{p_code}]]>
@@ -300,5 +300,15 @@
 	
 	<!-- ========================================================== -->
 	
+	<!-- 상품평 -->
+	
+	
+	
+	<insert id="p_comment_Insert"  parameterType="com.curi.dto.ProductCommentDTO">
+	 
+		INSERT INTO curi_PRO_REPLY(RNO,WRITER,CONTENT,P_CODE) 
+		VALUES(seq_P_RNO.NEXTVAL,#{writer},#{content},#{p_code})
+	
+	</insert>
 	
 </mapper>

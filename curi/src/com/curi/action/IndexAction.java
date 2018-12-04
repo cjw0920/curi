@@ -56,7 +56,6 @@ public class IndexAction implements Action{
 		//매개변수로 boolean 타입의 false값을 전송
 		forward.setRedirect(false);	//forward 방식을 사용
 		
-		
 		return forward;
 	}
 

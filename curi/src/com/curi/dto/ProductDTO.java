@@ -3,7 +3,7 @@ package com.curi.dto;
 import java.sql.Date;
 
 public class ProductDTO {
-	private String p_code;
+	private int p_code;
     private String p_name;
     private int p_price;
     private int p_purchasecnt;
@@ -20,7 +20,7 @@ public class ProductDTO {
     
     
 
-	public ProductDTO(String p_code, String p_name, int p_price, int p_purchasecnt, int p_goodcnt, String p_img,
+	public ProductDTO(int p_code, String p_name, int p_price, int p_purchasecnt, int p_goodcnt, String p_img,
 			Date p_indate) {
 		super();
 		this.p_code = p_code;
@@ -32,11 +32,11 @@ public class ProductDTO {
 		this.p_indate = p_indate;
 	}
 
-	public String getP_code() {
+	public int getP_code() {
 		return p_code;
 	}
 
-	public void setP_code(String p_code) {
+	public void setP_code(int p_code) {
 		this.p_code = p_code;
 	}
 

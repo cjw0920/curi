@@ -3,6 +3,8 @@ package com.curi.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.curi.dto.ProductCommentDTO;
+import com.curi.dto.ReplyDTO;
 import com.curi.mybatis.SqlMapConfig;
 
 public class ProductCommentDAO {
@@ -18,10 +20,21 @@ public class ProductCommentDAO {
 		return instance;
 	}
 	
+
 	
 	
-	
-	
+	public void Insert(ProductCommentDTO pDto){
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.insert("p_comment_Insert",pDto);
+			sqlSession.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
 	
 	
 	

@@ -276,7 +276,7 @@ public class ProductDAO {
 				
 		
 		//상품 Detail 페이지 
-		public ProductDTO ProductDetailView(String p_code) {
+		public ProductDTO ProductDetailView(int p_code) {
 			
 			sqlSession = sqlSessionFactory.openSession();
 			ProductDTO pDto = null;
