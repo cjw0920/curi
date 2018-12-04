@@ -138,7 +138,7 @@ select {
     
 }
 #cart:hover {
-	background-color: #FFe6e6;
+	background-color: #FFD8D8;
 }
 
 
@@ -174,6 +174,7 @@ select {
 #user{
 	margin: 15px 0;
     margin-left: 10px;
+    margin-top: 4px;
 }
 
 #user>input{
@@ -206,6 +207,14 @@ $(document).ready(function(){
 	
 });
 
+
+$(document).on("click","#inser_btn",function(elClickedObj){
+	
+	
+	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
+	
+	$("#frm_bin").submit();
+});
 </script>
 </head>
 <body id="indexbody">
@@ -298,35 +307,37 @@ $(document).ready(function(){
 	
 	<div class="all" id="comment_list">
 		<div id="comment">상품평</div>
-		
-		<div id="user_comment">
-			<div id="user">작성자 :  <input readonly="readonly" id="writer" name="writer" value="${sessionScope.loginUser.id}"></div>
-			
-			<div>
-				<textarea id="content" name="content">${boardview.content}</textarea>
+		<form action="ProductCommentInsertPlay.bizpoll" id="frm_bin" method="post" enctype="multipart/form-data">
+			<div id="user_comment">
+				<div style="visibility: hidden;"><input id="p_code" name="p_code"  value="${productview.p_code}"></div>
+				<div id="user">작성자 :  <input readonly="readonly" id="writer" name="writer" value="${sessionScope.loginUser.id}"></div>
 				
-				<script type="text/javascript">
-					var oEditors=[];
-					nhn.husky.EZCreator.createInIFrame({
-						oAppRef: oEditors,
-						elPlaceHolder:"content",
-						sSkinURI:"<%=path%>/smarteditor/SmartEditor2Skin.html",
-						fCreator:"createSEditor2"
-					});
-				</script>	
-				
-			</div>
-			<a>
-				<div id="inser_btn">
-					등록
+				<div>
+					<textarea id="content" name="content">${boardview.content}</textarea>
+					
 				</div>
-			</a>
-		</div>
+				<a>
+					<div id="inser_btn">
+						등록
+					</div>
+				</a>
+			</div>
+		</form>
 	</div>
 	
 	
 		
 		
-		
+	
+					<script type="text/javascript">
+						var oEditors=[];
+						nhn.husky.EZCreator.createInIFrame({
+							oAppRef: oEditors,
+							elPlaceHolder:"content",
+							sSkinURI:"<%=path%>/smarteditor/SmartEditor2Skin.html",
+							fCreator:"createSEditor2"
+						});
+					</script>	
+						
 </body>
 </html>
