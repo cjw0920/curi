@@ -311,4 +311,27 @@
 	
 	</insert>
 	
+	
+	<select id="Commentlist" parameterType="String" resultType="com.curi.dto.ProductCommentDTO">
+	
+	<![CDATA[
+		SELECT * FROM curi_PRO_REPLY
+		WHERE P_CODE = #{p_code}
+		ORDER BY rno ASC
+	]]>
+	
+	</select>
+
+	<update id="pcPlus"  parameterType="com.curi.dto.ProductCommentDTO">
+		UPDATE curi_product SET replycnt = replycnt+1
+		WHERE p_code = #{p_code}
+	</update>
+	
+	<update id="pcMinus"  parameterType="com.curi.dto.ProductCommentDTO">
+		UPDATE curi_product SET replycnt = replycnt-1
+		WHERE p_code = #{p_code}
+	</update>
+	
+	
+	
 </mapper>

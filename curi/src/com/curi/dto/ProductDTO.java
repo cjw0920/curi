@@ -10,7 +10,9 @@ public class ProductDTO {
     private int p_goodcnt;
     private String p_img;
     private Date p_indate;
-	
+    private int replycnt;
+    
+    
     public ProductDTO() {
 		super();
 	}
@@ -87,6 +89,28 @@ public class ProductDTO {
 	public void setP_indate(Date p_indate) {
 		this.p_indate = p_indate;
 	}
+
+
+
+
+
+
+	public int getReplycnt() {
+		return replycnt;
+	}
+
+
+
+
+
+
+	public void setReplycnt(int replycnt) {
+		this.replycnt = replycnt;
+	}
+
+	
+	
+	
 	
     
     

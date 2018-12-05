@@ -40,6 +40,7 @@ import com.curi.action.MemberUpdateAction;
 import com.curi.action.MemberUpdatePlayAction;
 import com.curi.action.New_ItemAction;
 import com.curi.action.ProductCommentInsertPlayAction;
+import com.curi.action.ProductCommentListPlayAction;
 import com.curi.action.PwCheckActoin;
 import com.curi.action.PwUpdatePlayAction;
 import com.curi.action.ReplyDeleteAction;
@@ -196,6 +197,9 @@ public class BizpollFrontController extends HttpServlet {
 			forward = action.excute(request, response);
 		}else if(command.equals("/ProductCommentInsertPlay.bizpoll")) {
 			action =new ProductCommentInsertPlayAction();
+			forward = action.excute(request, response);
+		}else if(command.equals("/productcommemtlist.bizpoll")) {
+			action =new ProductCommentListPlayAction();
 			forward = action.excute(request, response);
 		}
 		

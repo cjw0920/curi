@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.curi.common.Constants;
 import com.curi.dao.BoardDAO;
 import com.curi.dao.ProductCommentDAO;
+import com.curi.dao.ProductDAO;
 import com.curi.dao.ReplyDAO;
 import com.curi.dto.BoardDTO;
 import com.curi.dto.ProductCommentDTO;
@@ -22,6 +23,9 @@ public class ProductCommentInsertPlayAction implements Action{
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String url = "productCommentList.jsp";
+		
+		
 		MultipartRequest multi = new MultipartRequest(request,	//request
 				Constants.UPLOAD_PATH,	//파일업로드 디렉토리
 				Constants.MAX_UPLOAD,	//업로드 최대 용량
@@ -32,21 +36,18 @@ public class ProductCommentInsertPlayAction implements Action{
 		String writer = multi.getParameter("writer");
 		String content = multi.getParameter("content");
 		
-		
 		System.out.println(p_code);
 		System.out.println(writer);
 		System.out.println(content);
 		
-		
-		
-		ProductCommentDAO pDao = ProductCommentDAO.getInstance();
 		ProductCommentDTO pDto = new ProductCommentDTO(writer, content, p_code);
+		ProductCommentDAO pcDao = ProductCommentDAO.getInstance();
 		
-		System.out.println(pDto.toString());
+		pcDao.Insert(pDto);
 		
-		pDao.Insert(pDto);
+		ProductDAO pDao = ProductDAO.getInstance();
+		pDao.ReplyCntPlus(p_code);
 		
 		return null;
 	}
-
 }

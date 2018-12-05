@@ -11,6 +11,13 @@ public class ProductCommentDTO {
 	
 	
 	
+	
+	
+	public ProductCommentDTO() {
+		super();
+	}
+
+
 	public ProductCommentDTO(String writer, String content, int p_code) {
 		super();
 		this.writer = writer;

@@ -10,6 +10,7 @@
 body {
 	margin-top: 10%;
 	margin-left: 24%;
+	margin-right: 20%;
 }
 
 input{
@@ -24,7 +25,7 @@ input{
 
 .all {
 	border: 1px solid #dadada;
-	width: 70%;
+	width: 95%;
 }
 
 #img_tle {
@@ -153,10 +154,10 @@ select {
 	background-color: #B2EBF4;
 }
 
-#comment_list{
+#comment_all{
 	margin-top: 5%;
 	text-align: center;
-	margin-bottom: 10%;
+	margin-bottom: 4%;
 }
 
 #comment{
@@ -172,13 +173,13 @@ select {
 	width: 100%;
 }
 
-#user{
+.user{
 	margin: 15px 0;
     margin-left: 10px;
     margin-top: 4px;
 }
 
-#user>input{
+.user>input{
     margin-left: 10px;
 }
 
@@ -197,6 +198,49 @@ select {
 	background-color: #B2EBF4;
 }
 
+#comment_one{
+	text-align: left;
+	background-image: url("img/talk/talk1.png");
+	height: 170px;
+	background-repeat : no-repeat;
+	margin: 0 5%;
+	width: 300px;
+}
+
+
+#comment_one:even {
+  	text-align: left;
+	background-image: url("img/talk/talk2.png");
+	height: 170px;
+	background-repeat : no-repeat;
+	margin: 0 5%;
+	width: 300px;
+}
+
+
+
+#comment_user{
+    margin-top: 2%;
+}
+
+#comment_content{
+    width: 99%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    font-size: 15px;
+}
+
+.reply_del{
+	color : red;
+}
+	
+.reply_up{
+	color : blue;
+}
+
+p{
+	margin: 0;
+}
 </style>
 <script type="text/javascript" src="<%=path%>/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
@@ -206,7 +250,38 @@ $(document).ready(function(){
 		alert("장바구니에 담겼습니다.")
 	});
 	
+	comment_all();
+	
 });
+
+
+function comment_all(){
+	$.ajax({
+		type:"post",
+		url:"productcommemtlist.bizpoll",
+		data:"p_code=${productview.p_code}",
+		success:function(result){
+			 $("#comment_list_all").html(result);	
+		}
+	});
+}
+
+$(document).on("click","#inser_btn",function() {
+	$.ajax({
+		url : "ProductCommentInsertPlay.bizpoll",
+		data:$("#frm_bin").serialize(),
+		contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+		success:function(){
+			comment_all();
+			$("content").val("");
+		},
+		error:function(){
+			alert("system error!");
+		}
+	});
+});
+
+
 
 
 $(document).on("click","#inser_btn",function(elClickedObj){
@@ -216,6 +291,10 @@ $(document).on("click","#inser_btn",function(elClickedObj){
 	
 	$("#frm_bin").submit();
 });
+
+
+
+
 </script>
 </head>
 <body id="indexbody">
@@ -306,39 +385,32 @@ $(document).on("click","#inser_btn",function(elClickedObj){
 	
 	
 	
-	<div class="all" id="comment_list">
-		<div id="comment">상품평</div>
-		<form action="ProductCommentInsertPlay.bizpoll" id="frm_bin" method="post" enctype="multipart/form-data">
-			<div id="user_comment">
-				<div style="visibility: hidden;"><input id="p_code" name="p_code"  value="${productview.p_code}"></div>
-				<div id="user">작성자 :  <input readonly="readonly" id="writer" name="writer" value="${sessionScope.loginUser.id}"></div>
-				
-				<div>
-					<textarea id="content" name="content">${boardview.content}</textarea>
-					
-				</div>
-				<a>
-					<div id="inser_btn">
-						등록
+	<div class="all" id="comment_all">
+			<div id="comment">상품평</div>
+			<div  id="comment_insert">
+				<form action="ProductCommentInsertPlay.bizpoll" id="frm_bin" name="frm_bin" method="post" enctype="multipart/form-data">
+					<div id="user_comment">
+						<div style="visibility: hidden;"><input id="p_code" name="p_code"  value="${productview.p_code}"></div>
+						<div class="user">작성자 :  <input readonly="readonly" id="writer" name="writer" value="${sessionScope.loginUser.id}"></div>
+						<div>
+							<textarea id="content" name="content"></textarea>
+							
+							<div id="inser_btn">
+							<a>
+								등록
+							</a>
+							</div>
+						</div>
+						
 					</div>
-				</a>
+				</form>
 			</div>
-		</form>
+		
+		
+		<div id="comment_list_all"></div>
 	</div>
 	
-	
-		
-		
-	
-					<script type="text/javascript">
-						var oEditors=[];
-						nhn.husky.EZCreator.createInIFrame({
-							oAppRef: oEditors,
-							elPlaceHolder:"content",
-							sSkinURI:"<%=path%>/smarteditor/SmartEditor2Skin.html",
-							fCreator:"createSEditor2"
-						});
-					</script>	
+					
 						
 </body>
 </html>
