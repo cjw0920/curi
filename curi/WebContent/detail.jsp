@@ -199,6 +199,7 @@ select {
 	background-color: #B2EBF4;
 }
 
+
 #comment_list>div:nth-child(odd) {
   	text-align: left;
 	height: 170px;
@@ -217,6 +218,7 @@ select {
 	background-image: url("img/talk/talk2.png");
 	margin-left: 65%;
 }
+
 
 #comment_user{
     margin-top: 2%;

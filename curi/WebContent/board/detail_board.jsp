@@ -377,6 +377,8 @@ $(document).on("click",".reply_up",function() {
 	return false;
 });
 
+
+
 $(document).on("click",".reply_ok",function() {
 	var rno = $(this).attr("data_num");
 	var content = $("#content").val();

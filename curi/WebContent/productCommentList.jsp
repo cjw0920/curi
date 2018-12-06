@@ -66,6 +66,6 @@
 							sSkinURI:"<%=path%>/smarteditor/SmartEditor2Skin.html",
 							fCreator:"createSEditor2"
 						});
-		</script>	
+</script>	
 </body>
 </html>
