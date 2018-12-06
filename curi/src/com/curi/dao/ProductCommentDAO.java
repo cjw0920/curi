@@ -58,7 +58,17 @@ public class ProductCommentDAO {
 		return list;
 	}
 	
-	
+	public void commentDelete(String rno){
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.selectList("commentDelete",rno);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
 	
 	
 	

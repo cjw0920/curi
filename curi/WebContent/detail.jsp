@@ -193,31 +193,30 @@ select {
 	text-align: center;
 	float: right;
 	cursor: pointer;
+	margin-bottom: 5%;
 }
 #inser_btn:hover{
 	background-color: #B2EBF4;
 }
 
-#comment_one{
-	text-align: left;
-	background-image: url("img/talk/talk1.png");
-	height: 170px;
-	background-repeat : no-repeat;
-	margin: 0 5%;
-	width: 300px;
-}
-
-
-#comment_one:even {
+#comment_list>div:nth-child(odd) {
   	text-align: left;
-	background-image: url("img/talk/talk2.png");
 	height: 170px;
 	background-repeat : no-repeat;
 	margin: 0 5%;
 	width: 300px;
+	background-image: url("img/talk/talk1.png");
 }
 
-
+#comment_list>div:nth-child(even) {
+  	text-align: left;
+	height: 170px;
+	background-repeat : no-repeat;
+	/* //margin: 0 5%; */
+	width: 300px;
+	background-image: url("img/talk/talk2.png");
+	margin-left: 65%;
+}
 
 #comment_user{
     margin-top: 2%;
@@ -241,6 +240,13 @@ select {
 p{
 	margin: 0;
 }
+
+#commentListAll{
+    padding-top: 5%;
+    background-image: url("");
+}
+
+
 </style>
 <script type="text/javascript" src="<%=path%>/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
@@ -249,7 +255,8 @@ $(document).ready(function(){
 	$("#cart").click(function(){
 		alert("장바구니에 담겼습니다.")
 	});
-	
+
+    
 	comment_all();
 	
 });
@@ -266,7 +273,15 @@ function comment_all(){
 	});
 }
 
-$(document).on("click","#inser_btn",function() {
+
+$(document).on("click","#inser_btn",function(elClickedObj) {
+	
+	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
+	
+	var content = $("#content").val();
+	var p_code = ${productview.p_code};
+	$("#p_code").val(p_code);
+	
 	$.ajax({
 		url : "ProductCommentInsertPlay.bizpoll",
 		data:$("#frm_bin").serialize(),
@@ -274,25 +289,24 @@ $(document).on("click","#inser_btn",function() {
 		success:function(){
 			comment_all();
 			$("content").val("");
-		},
-		error:function(){
-			alert("system error!");
 		}
 	});
 });
 
-
-
-
-$(document).on("click","#inser_btn",function(elClickedObj){
+$(document).on("click",".reply_del",function() {
+	var rno = $(this).attr("data_num");
+	alert(rno);
+	var p_code = ${productview.p_code};
 	
-	
-	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
-	
-	$("#frm_bin").submit();
+	$.ajax({
+		type:"post",
+		url:"ProductCommentDeletePlay.bizpoll",
+		data:"rno="+rno+"&p_code="+p_code,
+		success:function(result){
+			comment_all();	
+		}
+	});
 });
-
-
 
 
 </script>
@@ -387,24 +401,7 @@ $(document).on("click","#inser_btn",function(elClickedObj){
 	
 	<div class="all" id="comment_all">
 			<div id="comment">상품평</div>
-			<div  id="comment_insert">
-				<form action="ProductCommentInsertPlay.bizpoll" id="frm_bin" name="frm_bin" method="post" enctype="multipart/form-data">
-					<div id="user_comment">
-						<div style="visibility: hidden;"><input id="p_code" name="p_code"  value="${productview.p_code}"></div>
-						<div class="user">작성자 :  <input readonly="readonly" id="writer" name="writer" value="${sessionScope.loginUser.id}"></div>
-						<div>
-							<textarea id="content" name="content"></textarea>
-							
-							<div id="inser_btn">
-							<a>
-								등록
-							</a>
-							</div>
-						</div>
-						
-					</div>
-				</form>
-			</div>
+		
 		
 		
 		<div id="comment_list_all"></div>

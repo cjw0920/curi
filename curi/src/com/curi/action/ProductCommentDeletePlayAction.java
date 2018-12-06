@@ -17,31 +17,23 @@ import com.curi.dto.ReplyDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class ProductCommentInsertPlayAction implements Action{
+public class ProductCommentDeletePlayAction implements Action{
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String rno = request.getParameter("rno");
 		
-		
-		
-		int p_code =Integer.parseInt(request.getParameter("p_code"));
-		String writer = request.getParameter("writer");
-		String content = request.getParameter("content");
-		
-		System.out.println(p_code);
-		System.out.println(writer);
-		System.out.println(content);
-		
-		ProductCommentDTO pcDto = new ProductCommentDTO(writer, content, p_code);
 		ProductCommentDAO pcDao = ProductCommentDAO.getInstance();
 		
-		pcDao.Insert(pcDto);
+		pcDao.commentDelete(rno);
 		
+		int p_code = Integer.parseInt(request.getParameter("p_code"));
 		ProductDAO pDao = ProductDAO.getInstance();
-		pDao.ReplyCntPlus(p_code);
+		pDao.ReplyCntMinus(p_code);
 		
 		return null;
+		
 	}
 }

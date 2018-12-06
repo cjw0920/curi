@@ -363,6 +363,9 @@ $(document).on("click",".reply_del",function() {
 	});
 });
 
+
+
+
 $(document).on("click",".reply_up",function() {
 	var rno = $(this).attr("data_num");
 	$(".reply_del").css("display","none");
@@ -372,9 +375,6 @@ $(document).on("click",".reply_up",function() {
 	$("#content").attr("readonly", false);
 	$("#content").focus();
 	return false;
-	
-	
-	
 });
 
 $(document).on("click",".reply_ok",function() {

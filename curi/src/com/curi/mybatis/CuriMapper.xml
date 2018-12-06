@@ -332,6 +332,9 @@
 		WHERE p_code = #{p_code}
 	</update>
 	
+	<delete id="commentDelete" parameterType="String">
+		DELETE FROM curi_PRO_REPLY WHERE rno = #{rno}
+	</delete>
 	
 	
 </mapper>
