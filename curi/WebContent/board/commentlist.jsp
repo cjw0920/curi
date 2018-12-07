@@ -31,7 +31,9 @@
 					<div id="login_o">
 						<table>
 							<tr>
-								<input id="re_writer" name="re_writer" type="hidden"value="${sessionScope.loginUser.id}">
+								
+								<input id="up_rno" name="up_rno" type="hidden">
+								<input id="re_writer" name="re_writer" type="hidden" value="${sessionScope.loginUser.id}">
 								<input type="hidden" id="re_bno" name="re_bno" value="${boardview.bno}">
 								<td id="comm_input">
 									<input id="login_input" name="login_input" type="text" name="" size="40" placeholder="댓글을 입력해주세요">
@@ -45,42 +47,42 @@
 				</form>
 			</c:otherwise>
 		</c:choose>
-				
-		<c:forEach items="${replyList}" var="replyview">
-			<div>
-				<table>
-					<tr>
+		<div id="reply_none">
+			<c:forEach items="${replyList}" var="replyview">
+				<div>
+					<table>
+						<tr>
+							
+							<td colspan="2">${replyview.writer} 
+								<c:if test="${sessionScope.loginUser.id==replyview.writer}">
+									<a href="#" class="reply_del" data_num="${replyview.rno}">삭제</a>
+									<a href="#" class="reply_up" data_num="${replyview.rno}" data_val="${replyview.content}">수정</a>
+								</c:if>
+							</td>
+						</tr>
 						
-						<td colspan="2">${replyview.writer} 
-							<c:if test="${sessionScope.loginUser.id==replyview.writer}">
-								<a href="#" class="reply_del" data_num="${replyview.rno}">삭제</a>
-								<a href="#" class="reply_up" data_num="${replyview.rno}">수정</a>
-							</c:if>
-						</td>
-					</tr>
-					
-					<tr>
-						<td id="review_content">
-							<input value="${replyview.content}" id="content" name="content" readonly="readonly">
-						</td>
-						<td id="icon" rowspan="2">
-							<div id="ctn">
-								<i class="far fa-thumbs-up" id="good_icon"></i>
-								<span> 좋아요</span>
-								<div id="space"></div>
-								<i class="far fa-thumbs-down" id="bad_icon"></i>
-								<span> 싫어요</span>
-							</div>
-								<a><span id="update_btn" class="reply_ok" data_num="${replyview.rno}">확인</span></a>
-						</td>
-					</tr>
-					
-					<tr><td id="review_date"><fmt:formatDate pattern="yyyy-MM-dd" value="${replyview.regdate}"/></td></tr>				
-				</table>
-			</div>
-			<input type="hidden" id="rno" name="rno" value="${replyview.rno}">
-		</c:forEach>
-		
+						<tr>
+							<td id="review_content">
+								<input value="${replyview.content}" id="content" name="content" readonly="readonly">
+							</td>
+							<td id="icon" rowspan="2">
+								<div id="ctn">
+									<i class="far fa-thumbs-up" id="good_icon"></i>
+									<span> 좋아요</span>
+									<div id="space"></div>
+									<i class="far fa-thumbs-down" id="bad_icon"></i>
+									<span> 싫어요</span>
+								</div>
+									<a><span id="update_btn" class="reply_ok" data_num="${replyview.rno}">확인</span></a>
+							</td>
+						</tr>
+						
+						<tr><td id="review_date"><fmt:formatDate pattern="yyyy-MM-dd" value="${replyview.regdate}"/></td></tr>				
+					</table>
+				</div>
+				<input type="hidden" id="rno" name="rno" value="${replyview.rno}">
+			</c:forEach>
+		</div>
 		
 		
 	</div>

@@ -368,41 +368,20 @@ $(document).on("click",".reply_del",function() {
 
 $(document).on("click",".reply_up",function() {
 	var rno = $(this).attr("data_num");
-	$(".reply_del").css("display","none");
-	$(".reply_up").css("display","none");
-	$("#ctn").css("display","none");
-	$("#update_btn").css("display","block");
-	$("#content").attr("readonly", false);
-	$("#content").focus();
-	return false;
+	var content = $(this).attr("data_val");
+	alert(rno+","+content);
+	$("#up_rno").val(rno);
+	$("#login_input").val(content);
+	$("#reply_none").css("display","none");
 });
 
-
-
-$(document).on("click",".reply_ok",function() {
-	var rno = $(this).attr("data_num");
-	var content = $("#content").val();
-	
-	alert(content);
-	$.ajax({
-		type:"post",
-		url:"replyUpdate.bizpoll",
-		data:"rno="+rno+"&content="+content,
-		success:function(result){
-			comment_list();	
-		},
-		error:function(){
-			alert("system error!");
-		}
-	});
-});
 
 $(document).on("click","#insert_btn",function() {
 	var content = $("#login_input").val();
-	alert(content);
+	 alert(content); 
 	if(content==""){
 		$("#login_input").focus();
-		$("#login_o td").css("border","1px solid red");
+		$("#login_o td").css("border","1px solid red"); 
 		return false;
 	}else{
 		var bno = ${boardview.bno};
@@ -412,7 +391,7 @@ $(document).on("click","#insert_btn",function() {
 		url : "replyInsert.bizpoll",
 		data:$("#frm_reply").serialize(),
 		contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-		success:function(){
+		success:function(result){
 			comment_list();
 			$("#login_input").val("");
 		},
@@ -421,7 +400,6 @@ $(document).on("click","#insert_btn",function() {
 		}
 	});
 });
-
 
 </script>
 

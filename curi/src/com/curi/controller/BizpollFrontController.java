@@ -45,8 +45,7 @@ import com.curi.action.ProductCommentListPlayAction;
 import com.curi.action.PwCheckActoin;
 import com.curi.action.PwUpdatePlayAction;
 import com.curi.action.ReplyDeleteAction;
-import com.curi.action.ReplyInsertAction;
-import com.curi.action.ReplyUpdateAction;
+import com.curi.action.ReplyInsertAndUpdateAction;
 import com.curi.action.productDetailAction;
 
 /**
@@ -179,13 +178,10 @@ public class BizpollFrontController extends HttpServlet {
 			action =new CommemtDeleteAction();
 			forward = action.excute(request, response);
 		}else if(command.equals("/replyInsert.bizpoll")) {
-			action =new ReplyInsertAction();
+			action =new ReplyInsertAndUpdateAction();
 			forward = action.excute(request, response);
 		}else if(command.equals("/replydelete.bizpoll")) {
 			action =new ReplyDeleteAction();
-			forward = action.excute(request, response);
-		}else if(command.equals("/replyUpdate.bizpoll")) {
-			action =new ReplyUpdateAction();
 			forward = action.excute(request, response);
 		}else if(command.equals("/productViewcnt.bizpoll")) {
 			action =new productDetailAction();
