@@ -237,7 +237,7 @@ $(document).on("click","#search_btn",function() {
 			 	
 			 	<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today2"/>
 			 	<fmt:formatDate value="${bDto.regdate}" pattern="yyyy-MM-dd" var="regdate2"/>
-			 		
+			 	
 			 	<tr>
 			 		<td>${bDto.bno}</td>
 			 		<td id="title_con">			 		

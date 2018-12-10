@@ -72,8 +72,17 @@ public class ProductCommentDAO {
 	
 	
 	
-	
-	
+	public void commentUpdate(ProductCommentDTO pcDto){
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.update("commentUpdate",pcDto);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
 	
 	
 }

@@ -194,15 +194,10 @@
 						<if test='code=="cnt"'>
 							ORDER BY viewcnt DESC, bno DESC
 						</if>						
-
-
-
 		  <![CDATA[
     					) a 
  					)
 				 WHERE rnum BETWEEN #{pageStart} AND #{perPageNum}]]> 
-				 
-				 
 	</select>
 	
 	<select id="boardDetailView" resultType="com.curi.dto.BoardDTO">
@@ -301,9 +296,6 @@
 	<!-- ========================================================== -->
 	
 	<!-- 상품평 -->
-	
-	
-	
 	<insert id="p_comment_Insert"  parameterType="com.curi.dto.ProductCommentDTO">
 	 
 		INSERT INTO curi_PRO_REPLY(RNO,WRITER,CONTENT,P_CODE) 
@@ -336,5 +328,7 @@
 		DELETE FROM curi_PRO_REPLY WHERE rno = #{rno}
 	</delete>
 	
-	
+	<update id="commentUpdate"  parameterType="com.curi.dto.ProductCommentDTO">
+		UPDATE curi_PRO_REPLY SET content = #{content} WHERE rno = #{rno}
+	</update>
 </mapper>

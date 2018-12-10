@@ -10,7 +10,7 @@ import com.curi.dao.BoardDAO;
 import com.curi.dao.ReplyDAO;
 import com.curi.dto.ReplyDTO;
 
-public class ReplyInsertAndUpdateAction implements Action{
+public class ReplyApplyAction implements Action{
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
@@ -19,7 +19,7 @@ public class ReplyInsertAndUpdateAction implements Action{
 
 		String up_rno = request.getParameter("up_rno") ;
 		System.out.println(up_rno);
-		if(up_rno.equals("")) {
+		if(up_rno.equals("")) {	//댓글 등록기능
 			System.out.println("입력");
 			int bno =Integer.parseInt(request.getParameter("re_bno"));
 			String writer =request.getParameter("re_writer");
@@ -33,7 +33,7 @@ public class ReplyInsertAndUpdateAction implements Action{
 			
 			BoardDAO bDao = BoardDAO.getInstance();
 			bDao.boardReplyCntPlus(bno);
-		}else {
+		}else {		//댓글 수정기능
 			System.out.println("수정");
 			int rno = Integer.parseInt(request.getParameter("up_rno"));
 			String content = request.getParameter("login_input");

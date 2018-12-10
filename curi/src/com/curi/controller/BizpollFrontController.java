@@ -40,12 +40,12 @@ import com.curi.action.MemberUpdateAction;
 import com.curi.action.MemberUpdatePlayAction;
 import com.curi.action.New_ItemAction;
 import com.curi.action.ProductCommentDeletePlayAction;
-import com.curi.action.ProductCommentInsertPlayAction;
+import com.curi.action.ProductCommentApplyPlayAction;
 import com.curi.action.ProductCommentListPlayAction;
 import com.curi.action.PwCheckActoin;
 import com.curi.action.PwUpdatePlayAction;
 import com.curi.action.ReplyDeleteAction;
-import com.curi.action.ReplyInsertAndUpdateAction;
+import com.curi.action.ReplyApplyAction;
 import com.curi.action.productDetailAction;
 
 /**
@@ -177,8 +177,8 @@ public class BizpollFrontController extends HttpServlet {
 		}else if(command.equals("/commemtDelete.bizpoll")) {
 			action =new CommemtDeleteAction();
 			forward = action.excute(request, response);
-		}else if(command.equals("/replyInsert.bizpoll")) {
-			action =new ReplyInsertAndUpdateAction();
+		}else if(command.equals("/replyApply.bizpoll")) {
+			action =new ReplyApplyAction();
 			forward = action.excute(request, response);
 		}else if(command.equals("/replydelete.bizpoll")) {
 			action =new ReplyDeleteAction();
@@ -192,8 +192,8 @@ public class BizpollFrontController extends HttpServlet {
 		}else if(command.equals("/category.bizpoll")) {
 			action =new CategoryAction();
 			forward = action.excute(request, response);
-		}else if(command.equals("/ProductCommentInsertPlay.bizpoll")) {
-			action =new ProductCommentInsertPlayAction();
+		}else if(command.equals("/ProductCommentApplyPlay.bizpoll")) {
+			action =new ProductCommentApplyPlayAction();
 			forward = action.excute(request, response);
 		}else if(command.equals("/productcommemtlist.bizpoll")) {
 			action =new ProductCommentListPlayAction();

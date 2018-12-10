@@ -146,11 +146,22 @@ $(document).on("click","#insert",function(elClickedObj){
 	
 	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
 	
+	var content = oEditors.getById["content"].getIR();
+	/* alert(content); 입력한 내용물 */
+
 	if(title==""){
-		$("#title").focus();
 		$("#title_err").css("display","inline-block");
+		$("#title").focus();
+		return false;
+	}else if(content=="<p><br></p>"){
+		alert("내용을 입력해주세요");
+		oEditors.getById["content"].exec("FOCUS"); //포커싱
 		return false;
 	}
+	
+	$("#title_err").css("display","none");
+	
+	
 	var nowfile= $("#file-name").text();
 	$("#now-file-name").val(nowfile);
 	$("#frm_bin").submit();

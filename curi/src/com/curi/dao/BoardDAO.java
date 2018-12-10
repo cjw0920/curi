@@ -133,7 +133,7 @@ public class BoardDAO {
 			
 			
 		}catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}finally {
 			sqlSession.close();
 		}

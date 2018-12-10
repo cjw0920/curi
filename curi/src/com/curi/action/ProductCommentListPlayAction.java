@@ -22,16 +22,13 @@ public class ProductCommentListPlayAction implements Action{
 		
 		String p_code = request.getParameter("p_code");
 		
-		
-		
-		System.out.println(p_code);
-		
-		
 		ProductCommentDAO pDao = ProductCommentDAO.getInstance();
 		List<ProductCommentDTO> commentList = pDao.commentListALL(p_code);
+		
+		int list_size = commentList.size();		
+		
+		request.setAttribute("list_size", list_size);
 		request.setAttribute("commentList", commentList);
-		
-		
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath(url);

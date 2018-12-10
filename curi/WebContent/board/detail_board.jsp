@@ -303,11 +303,21 @@
 	}
 	
 	.reply_del{
-		color : red;
+		color : #f08282;
+		font-weight: bold;
+	}
+	
+	.reply_del:hover{
+		color : #ff3232;
 	}
 	
 	.reply_up{
-		color : blue;
+		color : #289aff;
+		font-weight: bold;
+	}
+	
+	.reply_up:hover{
+		color : #0078ff;
 	}
 	
 	#review_content{
@@ -315,19 +325,31 @@
 		border: 0;
 	}
 	
-	.reply_ok{
-		float: right;
-	}
-	#update_btn{
-		display: none;
-		text-align: center;
-		background-color: #eaeaea;
-		padding : 10% 40%;
-	}
 	input{
 		border: 0px;
 		outline: 0px;
 	}
+	
+	
+#comment_list>div:nth-child(odd) {
+  	text-align: left;
+	height: 170px;
+	background-repeat : no-repeat;
+	margin: 0 5%;
+	width: 300px;
+	background-image: url("img/talk/talk1.png");
+}
+
+#comment_list>div:nth-child(even) {
+  	text-align: left;
+	height: 170px;
+	background-repeat : no-repeat;
+	width: 300px;
+	background-image: url("img/talk/talk2.png");
+	margin-left: 65%;
+}
+
+	
 </style>
 
 <script type="text/javascript">
@@ -388,7 +410,7 @@ $(document).on("click","#insert_btn",function() {
 		$("#re_bno").val(bno);
 	}
 	$.ajax({
-		url : "replyInsert.bizpoll",
+		url : "replyApply.bizpoll",
 		data:$("#frm_reply").serialize(),
 		contentType:'application/x-www-form-urlencoded; charset=UTF-8',
 		success:function(result){

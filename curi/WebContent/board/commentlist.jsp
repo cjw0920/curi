@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ include file="../include/include.jsp" %>
+	pageEncoding="UTF-8"%>
+
+<%@ include file="../include/include.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,81 +11,87 @@
 
 </head>
 <body>
-	
+
 	<div id="review">
-		
+
 		<span>댓글 수 : ${replyList.size()}</span>
-		
+
 		<c:if test="${replyList.size()==0}">
-		<div>
-			등록된 댓글이 없습니다. 첫번째 댓글을 남겨주세요
-		</div>
+			<div>등록된 댓글이 없습니다. 첫번째 댓글을 남겨주세요</div>
 		</c:if>
-		
+
 		<c:choose>
 			<c:when test="${empty sessionScope.loginUser}">
-				
+
 			</c:when>
 			<c:otherwise>
-				<form action="replyInsert.bizpoll" method="post" name="frm_reply" id="frm_reply">
+				<form action="replyApply.bizpoll" method="post" name="frm_reply"
+					id="frm_reply">
 					<div id="login_o">
 						<table>
 							<tr>
-								
-								<input id="up_rno" name="up_rno" type="hidden">
-								<input id="re_writer" name="re_writer" type="hidden" value="${sessionScope.loginUser.id}">
-								<input type="hidden" id="re_bno" name="re_bno" value="${boardview.bno}">
-								<td id="comm_input">
-									<input id="login_input" name="login_input" type="text" name="" size="40" placeholder="댓글을 입력해주세요">
-								</td>
+								<td id="comm_input"><input id="up_rno" name="up_rno"
+									type="hidden"> <input id="re_writer" name="re_writer"
+									type="hidden" value="${sessionScope.loginUser.id}"> <input
+									type="hidden" id="re_bno" name="re_bno"
+									value="${boardview.bno}"> <input id="login_input"
+									name="login_input" type="text" name="" size="40"
+									placeholder="댓글을 입력해주세요"></td>
 								<td>
 									<div id="insert_btn">완료</div>
 								</td>
 							</tr>
 						</table>
-					</div>		
+					</div>
 				</form>
 			</c:otherwise>
 		</c:choose>
+
+
+
+
 		<div id="reply_none">
-			<c:forEach items="${replyList}" var="replyview">
-				<div>
-					<table>
-						<tr>
-							
-							<td colspan="2">${replyview.writer} 
-								<c:if test="${sessionScope.loginUser.id==replyview.writer}">
-									<a href="#" class="reply_del" data_num="${replyview.rno}">삭제</a>
-									<a href="#" class="reply_up" data_num="${replyview.rno}" data_val="${replyview.content}">수정</a>
-								</c:if>
-							</td>
-						</tr>
-						
-						<tr>
-							<td id="review_content">
-								<input value="${replyview.content}" id="content" name="content" readonly="readonly">
-							</td>
-							<td id="icon" rowspan="2">
-								<div id="ctn">
-									<i class="far fa-thumbs-up" id="good_icon"></i>
-									<span> 좋아요</span>
-									<div id="space"></div>
-									<i class="far fa-thumbs-down" id="bad_icon"></i>
-									<span> 싫어요</span>
+			<div>
+				<div id="comment_list" style="margin-top: 5%;">
+					<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today2" />
+					<fmt:formatDate value="${bDto.regdate}" pattern="yyyy-MM-dd" var="regdate2" />
+					<c:forEach items="${replyList}" var="replyview">
+						<div id="comment_one">
+							<div style="height: 170px; width: 275px;">
+								<div
+									style="font-size: 13px; float: right; padding-top: 5px; color: darkgray;">
+									<c:choose>
+										<c:when test="${today2 == regdate2}">
+											<fmt:formatDate pattern="HH:mm:ss" value="${replyview.regdate}" />
+										</c:when>
+										<c:otherwise>
+											<fmt:formatDate pattern="yyyy-MM-dd" value="${replyview.regdate}" />
+										</c:otherwise>
+									</c:choose>
 								</div>
-									<a><span id="update_btn" class="reply_ok" data_num="${replyview.rno}">확인</span></a>
-							</td>
-						</tr>
-						
-						<tr><td id="review_date"><fmt:formatDate pattern="yyyy-MM-dd" value="${replyview.regdate}"/></td></tr>				
-					</table>
+								<div style="padding-left: 2%; height: 170px; padding-top: 25px;">
+									<div style="display: none; height:">
+										<input id="content" name="content" readonly="readonly" value="${replyview.content}" style="background-color: transparent; display: none;">
+									</div>
+									<div style="height: 40%; width: 275px;"> ${replyview.content}</div>
+
+									<div id="comment_user">
+										${replyview.writer}
+										<c:if test="${sessionScope.loginUser.id==replyview.writer}">
+											<a href="#" class="reply_del" style="margin-left: 35%;" data_num="${replyview.rno}">삭제</a>
+											<a href="#" class="reply_up" style="margin-left: 3%;" data_num="${replyview.rno}" data_val="${replyview.content}">수정</a>
+										</c:if>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
 				</div>
-				<input type="hidden" id="rno" name="rno" value="${replyview.rno}">
-			</c:forEach>
+			</div>
 		</div>
-		
-		
+
+
 	</div>
-	
+
 </body>
 </html>

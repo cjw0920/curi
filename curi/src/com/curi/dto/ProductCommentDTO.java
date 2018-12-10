@@ -18,6 +18,24 @@ public class ProductCommentDTO {
 	}
 
 
+	
+
+
+
+
+	public ProductCommentDTO(int rno, String content, int p_code) {
+		super();
+		this.rno = rno;
+		this.content = content;
+		this.p_code = p_code;
+	}
+
+
+
+
+
+
+
 	public ProductCommentDTO(String writer, String content, int p_code) {
 		super();
 		this.writer = writer;
@@ -95,15 +113,15 @@ public class ProductCommentDTO {
 	}
 
 
+
+
 	@Override
 	public String toString() {
 		return "ProductCommentDTO [rno=" + rno + ", writer=" + writer + ", content=" + content + ", regdate=" + regdate
-				+ ", p_code=" + p_code + ", getRno()=" + getRno() + ", getWriter()=" + getWriter() + ", getContent()="
-				+ getContent() + ", getRegdate()=" + getRegdate() + ", getP_code()=" + getP_code() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", p_code=" + p_code + "]";
 	}
-	
-	
+
+
 	
 	
 }
