@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-  <%@ include file="../include/sidenav_menu.jsp" %>     
+<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/sidenav_menu.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -190,3 +190,4 @@ a{
 	</div>
 </body>
 </html>
+<%@ include file="../include/footer.jsp"%>

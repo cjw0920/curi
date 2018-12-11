@@ -31,7 +31,6 @@ public class productDetailAction implements Action{
 		
 		ProductDAO pDao = ProductDAO.getInstance();
 		ProductDTO pDto = pDao.ProductDetailView(p_code);
-		
 		request.setAttribute("productview", pDto);
 		
 		ActionForward forward = new ActionForward();

@@ -23,6 +23,7 @@ public class ReplyDeleteAction implements Action{
 		rDao.replyDelete(rno);
 		
 		int bno = Integer.parseInt(request.getParameter("bno"));
+		
 		BoardDAO bDao = BoardDAO.getInstance();
 		bDao.boardReplyCntMinus(bno);
 		

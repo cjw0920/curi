@@ -21,6 +21,9 @@ public class ReplyApplyAction implements Action{
 		System.out.println(up_rno);
 		if(up_rno.equals("")) {	//댓글 등록기능
 			System.out.println("입력");
+			
+			
+			
 			int bno =Integer.parseInt(request.getParameter("re_bno"));
 			String writer =request.getParameter("re_writer");
 			String content =request.getParameter("login_input");
@@ -33,6 +36,12 @@ public class ReplyApplyAction implements Action{
 			
 			BoardDAO bDao = BoardDAO.getInstance();
 			bDao.boardReplyCntPlus(bno);
+			
+			
+			
+			
+			
+			
 		}else {		//댓글 수정기능
 			System.out.println("수정");
 			int rno = Integer.parseInt(request.getParameter("up_rno"));

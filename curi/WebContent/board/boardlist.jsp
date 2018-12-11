@@ -241,7 +241,7 @@ $(document).on("click","#search_btn",function() {
 			 	<tr>
 			 		<td>${bDto.bno}</td>
 			 		<td id="title_con">			 		
-			 			<a href="boardViewcnt.bizpoll?bno=${bDto.bno}">${bDto.title}</a><span id="replycnt"> [${bDto.replycnt}]</span>
+			 			<a href="boardViewcnt.bizpoll?bno=${bDto.bno}">${bDto.title}</a><span id="replycnt">[${bDto.replycnt}]</span>
 			 			<c:if test="${today2==regdate2}"><span id="today_time">New</span></c:if>
 			 		</td>
 			 		<td>${bDto.writer}</td>
