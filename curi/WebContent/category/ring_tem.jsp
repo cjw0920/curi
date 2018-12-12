@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
-<%@ include file="../include/sidenav_menu.jsp"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +29,6 @@ body{
 	margin-top: 70px;
 	border-bottom: 4px double #E2E3E4;
 	padding-bottom:10px; 
-}
-#ring_item_body{
-	padding-left: 180px;
 }
 
 #best_ring_item_page_all{
@@ -186,3 +182,4 @@ a{
 	</div>
 </body>
 </html>
+<%@ include file="../include/footer.jsp"%>

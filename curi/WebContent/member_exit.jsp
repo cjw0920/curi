@@ -154,22 +154,6 @@
 	
 	
 	
-	
- a#login_pop, a#join_pop {
-    border: 2px solid #aaa;
-    color: #fff;
-    display: block;
-    float: left;
-    margin-left: 10px;
-    padding: 5px 10px;
-    text-decoration: none;
-    text-shadow: 1px 1px #000;
-    border-radius: 10px;
-}
-
-a#login_pop:hover, a#join_pop:hover {
-    border-color: #eee;
-}
 
 .overlay {
     background-color: rgba(0, 0, 0, 0.6);

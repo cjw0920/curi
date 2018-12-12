@@ -115,7 +115,7 @@
 	</select>
 	
 	<select id="loginCheck" parameterType="com.curi.dto.MemberDTO" resultType="com.curi.dto.MemberDTO">
-		SELECT id FROM member WHERE id= #{id} AND pw=#{pw}
+		SELECT * FROM member WHERE id= #{id} AND pw=#{pw}
 	</select>
 	
 	<select id="updateMember" parameterType="com.curi.dto.MemberDTO">
@@ -331,4 +331,31 @@
 	<update id="commentUpdate"  parameterType="com.curi.dto.ProductCommentDTO">
 		UPDATE curi_PRO_REPLY SET content = #{content} WHERE rno = #{rno}
 	</update>
+	
+	<!-- ========================================================== -->
+	
+	<!-- 찜하기 -->
+	
+	
+	<select id="Wishlist" parameterType="String" resultType="com.curi.dto.WishDTO">
+	
+	<![CDATA[
+		SELECT * FROM curi_wish WHERE id = 'cgw153426' ORDER BY wno ASC
+	]]>
+	</select>
+
+
+	<insert id="WishInsert"  parameterType="com.curi.dto.WishDTO">
+	 
+		INSERT INTO curi_wish(wno,id,selec,p_code) 
+		VALUES(seq_wno.NEXTVAL,#{id},#{selec},#{p_code})
+	
+	</insert>
+	
+	
+	<update id="GoodCntPlus"  parameterType="com.curi.dto.WishDTO">
+		UPDATE curi_product SET P_GOODCNT = P_GOODCNT+1
+		WHERE p_code = #{p_code}
+	</update>
+	
 </mapper>

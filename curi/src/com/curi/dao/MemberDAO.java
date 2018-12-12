@@ -95,7 +95,6 @@ public class MemberDAO{
 			MemberDTO mDto = new MemberDTO();
 			mDto.setId(uid);
 			mDto.setPw(upw);
-			
 			try {
 				mDto = sqlSession.selectOne("loginCheck",mDto);
 				sqlSession.commit();

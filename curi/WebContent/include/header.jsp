@@ -426,22 +426,21 @@ $(document).on("click","#myBtn", function(){
 								<li><a href="loginOut.bizpoll">로그아웃</a></li>
 							</c:otherwise>
 						</c:choose>
-						<li>
-							<a id ="header_line1_mypage" href="#">마이페이지▼</a>
-							<div id="header_line1_dropdown">
-										<a href="#">주문/배송조회</a>
+						<c:choose>
+							<c:when test="${empty sessionScope.loginUser}"></c:when>
+							<c:otherwise>
+								<li>
+									<a id ="header_line1_mypage" href="#">마이페이지▼</a>
+									<div id="header_line1_dropdown">
 										<a href="#">장바구니</a>
 										<a href="#">위시리스트</a>
-								<c:choose>
-									<c:when test="${empty sessionScope.loginUser}"></c:when>
-									<c:otherwise>
-										<a href="<%=path%>/memberUpdate.bizpoll">회원정보</a>
+										<a href="<%=path%>/memberUpdate.bizpoll">회원정보 수정</a>
 										<a href="<%=path%>/memberPwUpdate.bizpoll">비밀번호 변경</a>
 										<a href="<%=path%>/memberExit.bizpoll">회원탈퇴</a>
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</li>
+									</div>
+								</li>
+							</c:otherwise>
+						</c:choose>
 						<li><a href="<%=path%>/boardList.bizpoll">고객센터</a></li>
 					</ul>
 				</div>
