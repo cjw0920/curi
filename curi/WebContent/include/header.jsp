@@ -408,6 +408,18 @@ $(document).on("click","#myBtn", function(){
     /* $(document).scrollTop(0); */
     $("html, body").animate({scrollTop: 0}, 1000);
 });
+
+
+$(document).on("click","#wish",function(){
+	var user = $(this).attr("data_num");
+	
+	if(user==""){
+		alert("로그인 해주세요");
+	}else{
+		$(this).attr("href","WishListAction.bizpoll?user="+user);
+	}
+}); 
+
  	</script>
  	
 </head>
@@ -433,7 +445,7 @@ $(document).on("click","#myBtn", function(){
 									<a id ="header_line1_mypage" href="#">마이페이지▼</a>
 									<div id="header_line1_dropdown">
 										<a href="#">장바구니</a>
-										<a href="#">위시리스트</a>
+										<a  data_num="${sessionScope.loginUser.id}" id="wish">위시리스트</a>
 										<a href="<%=path%>/memberUpdate.bizpoll">회원정보 수정</a>
 										<a href="<%=path%>/memberPwUpdate.bizpoll">비밀번호 변경</a>
 										<a href="<%=path%>/memberExit.bizpoll">회원탈퇴</a>

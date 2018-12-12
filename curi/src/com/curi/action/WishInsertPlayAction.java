@@ -16,14 +16,13 @@ import com.curi.dto.ProductDTO;
 import com.curi.dto.ReplyDTO;
 import com.curi.dto.WishDTO;
 
-public class WishListPlayAction implements Action{
+public class WishInsertPlayAction implements Action{
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		
-			String url = "myPage/wishList.jsp";
 		
 			String user = request.getParameter("user");
 			int p_code = Integer.parseInt(request.getParameter("p_code"));
@@ -31,6 +30,7 @@ public class WishListPlayAction implements Action{
 			
 			System.out.println(user+","+p_code+","+p_name);
 			
+			String url = "WishListAction.bizpoll?user="+user;
 			
 			WishDTO wDto = new WishDTO(user, p_name, p_code);
 			WishDAO wDao = WishDAO.getInstance();
@@ -40,9 +40,6 @@ public class WishListPlayAction implements Action{
 			ProductDAO pDao = ProductDAO.getInstance();
 			pDao.GoodCntPlus(p_code);
 			
-			
-			List<WishDTO> wishList = wDao.WishListALL(user);
-			request.setAttribute("wishList", wishList);
 			
 			ActionForward forward = new ActionForward();
 			forward.setPath(url);

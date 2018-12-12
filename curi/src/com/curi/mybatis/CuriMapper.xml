@@ -340,7 +340,7 @@
 	<select id="Wishlist" parameterType="String" resultType="com.curi.dto.WishDTO">
 	
 	<![CDATA[
-		SELECT * FROM curi_wish WHERE id = 'cgw153426' ORDER BY wno ASC
+		SELECT * FROM curi_wish WHERE id = #{id} ORDER BY wno ASC
 	]]>
 	</select>
 
