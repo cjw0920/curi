@@ -358,4 +358,18 @@
 		WHERE p_code = #{p_code}
 	</update>
 	
+	
+	
+	
+	<delete id="WishDelete" parameterType="String">
+		DELETE FROM curi_wish WHERE wno = #{wno}
+	</delete>
+
+	
+	<update id="GoodCntMinus"  parameterType="com.curi.dto.WishDTO">
+		UPDATE curi_product SET P_GOODCNT = P_GOODCNT-1
+		WHERE p_code = #{p_code}
+	</update>
+
+
 </mapper>

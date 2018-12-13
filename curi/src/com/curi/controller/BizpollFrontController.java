@@ -45,6 +45,7 @@ import com.curi.action.ProductCommentListPlayAction;
 import com.curi.action.PwCheckActoin;
 import com.curi.action.PwUpdatePlayAction;
 import com.curi.action.ReplyDeleteAction;
+import com.curi.action.WishDeleteAction;
 import com.curi.action.WishInsertPlayAction;
 import com.curi.action.WishListAction;
 import com.curi.action.ReplyApplyAction;
@@ -203,11 +204,14 @@ public class BizpollFrontController extends HttpServlet {
 		}else if(command.equals("/ProductCommentDeletePlay.bizpoll")) {
 			action =new ProductCommentDeletePlayAction();
 			forward = action.excute(request, response);
-		}else if(command.equals("/wishList.bizpoll")) {
+		}else if(command.equals("/wishInsert.bizpoll")) {
 			action =new WishInsertPlayAction();
 			forward = action.excute(request, response);
 		}else if(command.equals("/WishListAction.bizpoll")) {
 			action =new WishListAction();
+			forward = action.excute(request, response);
+		}else if(command.equals("/WishDeletePlay.bizpoll")) {
+			action =new WishDeleteAction();
 			forward = action.excute(request, response);
 		}
 		

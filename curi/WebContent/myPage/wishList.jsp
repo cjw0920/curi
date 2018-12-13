@@ -63,7 +63,36 @@ a{
 	background-color: lightgray;
 }
 
+#icon{
+	float: right;
+	padding-right: 10%;
+	cursor: pointer;
+}
+
 </style>
+
+<script type="text/javascript">
+
+$(document).on("click","#icon",function(){
+	var wno = $(this).attr("data_wno");
+	var p_code = $(this).attr("data_p_code");
+	var user = $(this).attr("data_user");
+	
+	
+	alert(wno +" "+p_code+" "+user);
+	
+	$.ajax({
+		type:"post",
+		url:"WishDeletePlay.bizpoll",
+		data:"user="+user+"&wno="+wno+"&p_code="+p_code,
+		success:function(){
+			location.reload();
+		}
+	});
+	
+});
+
+</script>
 </head>
 <body id="indexbody">
 
@@ -79,10 +108,10 @@ a{
 			<td class="white"></td>
 		</tr>
 		<c:forEach items="${wishList}" var="wishList">
+		 
 			<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today2"/>
 			<fmt:formatDate value="${bDto.regdate}" pattern="yyyy-MM-dd" var="regdate2"/>
 			<tr class="one_wish">
-				
 				<td>
 					<a href="productViewcnt.bizpoll?p_code=${wishList.p_code}">
 						${wishList.selec}
@@ -97,6 +126,7 @@ a{
 							<fmt:formatDate pattern="yyyy-MM-dd" value="${wishList.regdate}"/>
 						</c:otherwise>
 				 	</c:choose>
+				 	<i class="fas fa-times" id="icon" data_wno="${wishList.wno}" data_p_code="${wishList.p_code}" data_user="${sessionScope.loginUser.id}"></i>
 			 	</td>
 			</tr>
 		</c:forEach>	

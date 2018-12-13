@@ -30,8 +30,7 @@ public class WishInsertPlayAction implements Action{
 			
 			System.out.println(user+","+p_code+","+p_name);
 			
-			String url = "WishListAction.bizpoll?user="+user;
-			
+
 			WishDTO wDto = new WishDTO(user, p_name, p_code);
 			WishDAO wDao = WishDAO.getInstance();
 			
@@ -41,11 +40,7 @@ public class WishInsertPlayAction implements Action{
 			pDao.GoodCntPlus(p_code);
 			
 			
-			ActionForward forward = new ActionForward();
-			forward.setPath(url);
-			forward.setRedirect(false);
-			
-			return forward;
+			return null;
 	}
 
 }

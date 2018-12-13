@@ -32,6 +32,19 @@ public class WishDAO {
 		}
 	}
 	
+	public void Delete(String wno){
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.insert("WishDelete",wno);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	
 	public List<WishDTO> WishListALL(String id){
 		List<WishDTO> list = null;
 		sqlSession = sqlSessionFactory.openSession();

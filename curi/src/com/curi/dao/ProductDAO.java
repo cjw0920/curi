@@ -333,6 +333,18 @@ public class ProductDAO {
 			}
 		}
 		
+		public void GoodCntMinus(int p_code) {
+			sqlSession = sqlSessionFactory.openSession();
+			try {
+				sqlSession.update("GoodCntMinus",p_code);
+				sqlSession.commit();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+		}
+		
 		
 		
 	/*Mybatis 사용하기전 DBManager와 Prepare Statement 방식으로 구현한 DAO 객체

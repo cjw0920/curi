@@ -58,12 +58,12 @@ public class WishDTO {
 		}
 
 
-		public int getCno() {
+		public int getWno() {
 			return wno;
 		}
 
 
-		public void setCno(int wno) {
+		public void setWno(int wno) {
 			this.wno = wno;
 		}
 

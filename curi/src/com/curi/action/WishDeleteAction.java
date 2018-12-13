@@ -1,37 +1,38 @@
 package com.curi.action;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.curi.dao.ProductDAO;
 import com.curi.dao.WishDAO;
 import com.curi.dto.WishDTO;
 
-public class WishListAction implements Action{
+public class WishDeleteAction implements Action{
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "myPage/wishList.jsp";
+
+		String user = request.getParameter("user");
 		
-		String id = request.getParameter("user");
+		String url = "WishListAction.bizpoll?user="+user;
 		
-		System.out.println(id+"???");
+		
+		String wno = request.getParameter("wno");
+		int p_code = Integer.parseInt(request.getParameter("p_code"));
+		
+		
+		System.out.println(wno+","+p_code);
 		
 		WishDAO wDao = WishDAO.getInstance();
-		List<WishDTO> wishList = wDao.WishListALL(id);
-		request.setAttribute("wishList", wishList);
 		
-		int list_size = wishList.size();	
+		wDao.Delete(wno);
 		
-		request.setAttribute("list_size", list_size);
-		
-		Date today = new Date();
-		request.setAttribute("today", today);
+		ProductDAO pDao = ProductDAO.getInstance();
+		pDao.GoodCntMinus(p_code);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath(url);

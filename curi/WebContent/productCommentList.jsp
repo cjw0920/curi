@@ -40,7 +40,7 @@
 			<div id="comment_list">
 				 <c:forEach items="${commentList}" var="commentList">
 				 	<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today2"/>
-				 	<fmt:formatDate value="${bDto.regdate}" pattern="yyyy-MM-dd" var="regdate2"/>
+				 	<fmt:formatDate value="${commentList.regdate}" pattern="yyyy-MM-dd" var="regdate2"/>
 			 	
 				 	
 						<div id="comment_one">

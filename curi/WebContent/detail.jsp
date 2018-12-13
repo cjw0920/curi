@@ -337,102 +337,114 @@ p {
 	src="<%=path%>/smarteditor/js/service/HuskyEZCreator.js"
 	charset="utf-8"></script>
 <script type="text/javascript">
+	$(document).ready(function() {
+		$("#cart").click(function() {
+			alert("장바구니에 담겼습니다.")
+		});
 
-$(document).ready(function(){
-	$("#cart").click(function(){
-		alert("장바구니에 담겼습니다.")
+		comment_all();
+
 	});
 
-    
-	comment_all();
-	
-});
+	function comment_all() {
+		$.ajax({
+			type : "post",
+			url : "productcommemtlist.bizpoll",
+			data : "p_code=${productview.p_code}",
+			success : function(result) {
+				$("#comment_list_all").html(result);
+			}
+		});
+	}
 
+	$(document).on(
+			"click",
+			"#good",
+			function() {
+				var user = $(this).attr("data_num");
+				var p_name = $(this).attr("data_name");
+				var p_code = ${productview.p_code} ;
+				if (user == "") {
+					alert("로그인 해주세요");
+				} else {
+					$.ajax({
+						type : "post",
+						url : "wishInsert.bizpoll",
+						data : "user=" + user + "&p_name=" + p_name + "&p_code=" + p_code,
+						success : function() {
+							alert("장바구니에 담겼습니다.");
+							var result = confirm("위시리스트로 이동하시겠습니까?");
+							if (result) {
+								//yes 
+								location.replace('WishListAction.bizpoll?user='+ user);
+							} else {
+								location.reload();
+							}
 
-function comment_all(){
-	$.ajax({
-		type:"post",
-		url:"productcommemtlist.bizpoll",
-		data:"p_code=${productview.p_code}",
-		success:function(result){
-			 $("#comment_list_all").html(result);	
+						}
+					});
+
+				}
+			});
+
+	$(document).on("click", "#inser_btn", function(elClickedObj) {
+
+		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+		var content = $("#content").val();
+		if (content == "<p><br></p>") {
+			alert("내용을 입력해주세요");
+			oEditors.getById["content"].exec("FOCUS"); //포커싱
+			return false;
 		}
+		var p_code = $
+		{
+			productview.p_code
+		}
+		;
+		$("#p_code").val(p_code);
+
+		$.ajax({
+			url : "ProductCommentApplyPlay.bizpoll",
+			data : $("#frm_bin").serialize(),
+			contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+			success : function() {
+				comment_all();
+				$("content").val("");
+			}
+		});
 	});
-}
 
+	$(document).on("click", ".reply_up", function() {
+		var rno = $(this).attr("data_num");
+		var content = $(this).attr("data_val");
+		$("#commentListAll").css("display", "none");
 
+		var rno1 = $("#rno").val(rno);
 
-$(document).on("click","#good",function() {
-		var user = $(this).attr("data_num");
-		var p_name = $(this).attr("data_name");
-		var p_code = ${productview.p_code};
-		alert(user+","+p_code+","+p_name);
-	 	if(user==""){
-			alert("로그인 해주세요");
-		}else{
-			$(this).attr("href","wishList.bizpoll?user="+user+"&p_name="+p_name+"&p_code="+p_code);
-		}
-	});	 
-
-
-$(document).on("click","#inser_btn",function(elClickedObj) {
-	
-	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
-	var content = $("#content").val();
-	if(content=="<p><br></p>"){
-		alert("내용을 입력해주세요");
+		oEditors.getById["content"].exec("PASTE_HTML", [ content ]);
 		oEditors.getById["content"].exec("FOCUS"); //포커싱
 		return false;
-	}
-	var p_code = ${productview.p_code};
-	$("#p_code").val(p_code);
-	
-	$.ajax({
-		url : "ProductCommentApplyPlay.bizpoll",
-		data:$("#frm_bin").serialize(),
-		contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-		success:function(){
-			comment_all();
-			$("content").val("");
-		}
 	});
-});
 
-
-$(document).on("click",".reply_up",function() {
-	var rno = $(this).attr("data_num");
-	var content = $(this).attr("data_val");
-	$("#commentListAll").css("display","none");
-	
-	var rno1 = $("#rno").val(rno);
-	
-	oEditors.getById["content"].exec("PASTE_HTML", [content]);
-	oEditors.getById["content"].exec("FOCUS"); //포커싱
-	return false;
-});
-
-
-$(document).on("click",".reply_del",function() {
-	var rno = $(this).attr("data_num");
-	alert(rno);
-	var p_code = ${productview.p_code};
-	
-	$.ajax({
-		type:"post",
-		url:"ProductCommentDeletePlay.bizpoll",
-		data:"rno="+rno+"&p_code="+p_code,
-		success:function(result){
-			comment_all();	
+	$(document).on("click", ".reply_del", function() {
+		var rno = $(this).attr("data_num");
+		alert(rno);
+		var p_code = $
+		{
+			productview.p_code
 		}
+		;
+
+		$.ajax({
+			type : "post",
+			url : "ProductCommentDeletePlay.bizpoll",
+			data : "rno=" + rno + "&p_code=" + p_code,
+			success : function(result) {
+				comment_all();
+			}
+		});
+
 	});
-	
-
-	
-	
-	
-});
-
-
 </script>
 </head>
 <body id="indexbody">
@@ -496,15 +508,12 @@ $(document).on("click",".reply_del",function() {
 
 				<div id="finish_btn">
 
-						<a href="#" id="good" data_num="${sessionScope.loginUser.id}" data_name="${productview.p_name}">
-								<span>찜하기</span>
-						</a>
-						<a href="#" id="cart" data_num="${sessionScope.loginUser.id}">
-								<span>장바구니</span>
-						</a> 
-						<a href="#" id="sell">
-								<span>결제</span>
-						</a>
+					<a href="#" id="good" data_num="${sessionScope.loginUser.id}"
+						data_name="${productview.p_name}"> <span>찜하기</span>
+					</a> <a href="#" id="cart" data_num="${sessionScope.loginUser.id}">
+						<span>장바구니</span>
+					</a> <a href="#" id="sell"> <span>결제</span>
+					</a>
 				</div>
 
 
@@ -528,6 +537,7 @@ $(document).on("click",".reply_del",function() {
 
 		<div id="comment_list_all"></div>
 	</div>
+
 
 
 
