@@ -376,7 +376,7 @@
 
 	<select id="Cartlist" parameterType="String" resultType="com.curi.dto.CartDTO">
 		<![CDATA[
-			SELECT * FROM curi_cart WHERE id = #{id} ORDER BY cno ASC
+			SELECT * FROM curi_cart WHERE id = #{user} ORDER BY cno ASC
 		]]>
 	</select>
 	

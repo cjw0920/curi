@@ -36,11 +36,11 @@ public class CartDAO {
 		}
 	}
 	
-	public List<CartDTO> CartListALL(String id){
+	public List<CartDTO> CartListALL(String user){
 		List<CartDTO> list = null;
 		sqlSession = sqlSessionFactory.openSession();
 		try {
-			list = sqlSession.selectList("Cartlist",id);
+			list = sqlSession.selectList("Cartlist",user);
 			sqlSession.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

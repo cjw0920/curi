@@ -21,12 +21,11 @@ public class CartListAction implements Action{
 		
 		String url = "myPage/cartList.jsp";
 		
-		String id = request.getParameter("user");
+		String user = request.getParameter("user");
 		
-		System.out.println(id);
 		
 		CartDAO cDao = CartDAO.getInstance();
-		List<CartDTO> cartList = cDao.CartListALL(id);
+		List<CartDTO> cartList = cDao.CartListALL(user);
 		request.setAttribute("cartList", cartList);
 		
 		int list_size = cartList.size();	
