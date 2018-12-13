@@ -370,6 +370,24 @@
 		UPDATE curi_product SET P_GOODCNT = P_GOODCNT-1
 		WHERE p_code = #{p_code}
 	</update>
+	
+	
+	<!-- ========================================================== -->
 
-
+	<select id="Cartlist" parameterType="String" resultType="com.curi.dto.CartDTO">
+		<![CDATA[
+			SELECT * FROM curi_cart WHERE id = #{id} ORDER BY cno ASC
+		]]>
+	</select>
+	
+	<insert id="CartInsert"  parameterType="com.curi.dto.CartDTO">
+		INSERT INTO curi_cart(cno,id,selec,color,p_code,p_img,p_price) 
+		VALUES(seq_cno.NEXTVAL,#{id},#{selec},#{color},#{p_code},#{p_img},#{p_price})
+	</insert>
+	
+	
+	
+	<delete id="CartDelete" parameterType="String">
+		DELETE FROM curi_cart WHERE cno = #{cno}
+	</delete>
 </mapper>

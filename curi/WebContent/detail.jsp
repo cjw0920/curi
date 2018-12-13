@@ -338,9 +338,6 @@ p {
 	charset="utf-8"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#cart").click(function() {
-			alert("장바구니에 담겼습니다.")
-		});
 
 		comment_all();
 
@@ -357,10 +354,7 @@ p {
 		});
 	}
 
-	$(document).on(
-			"click",
-			"#good",
-			function() {
+	$(document).on( "click", "#good", function() {
 				var user = $(this).attr("data_num");
 				var p_name = $(this).attr("data_name");
 				var p_code = ${productview.p_code} ;
@@ -372,21 +366,65 @@ p {
 						url : "wishInsert.bizpoll",
 						data : "user=" + user + "&p_name=" + p_name + "&p_code=" + p_code,
 						success : function() {
-							alert("장바구니에 담겼습니다.");
+							alert("위시리스트에 담겼습니다.");
 							var result = confirm("위시리스트로 이동하시겠습니까?");
 							if (result) {
 								//yes 
-								location.replace('WishListAction.bizpoll?user='+ user);
+								location.replace('WishList.bizpoll?user='+ user);
 							} else {
 								location.reload();
 							}
-
 						}
 					});
-
 				}
 			});
 
+	
+	
+	
+	
+	$(document).on( "click", "#cart", function() {
+		var user = $(this).attr("data_num");
+		var p_img = $(this).attr("data_img");
+		var p_name = $(this).attr("data_name");
+		var p_code = ${productview.p_code} ;
+		var color = $("#color").val();
+		var p_price = $(this).attr("data_price");
+		
+		
+		alert(p_name);
+		
+		 
+		if (user == "") {
+			alert("로그인 해주세요");
+		} else {
+			$.ajax({
+				type : "post",
+				url : "CartInsert.bizpoll",
+				data : "user="+user+"&p_name="+p_name+"&p_code="+p_code+"&p_img="+p_img+"&color="+color+"&p_price="+p_price,
+				success : function() {
+					alert("장바구니에 담겼습니다.");
+					var result = confirm("장바구니로 이동하시겠습니까?");
+					if (result) {
+						 location.replace("CartList.bizpoll?user="+ user); 
+					} else {
+						 location.reload();
+					}
+				},
+				error : function(){
+					alert("실패하였습니다.");
+				}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+	
+	
+	
 	$(document).on("click", "#inser_btn", function(elClickedObj) {
 
 		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
@@ -485,12 +523,14 @@ p {
 					<tbody>
 						<tr>
 							<th>색상</th>
-							<td><select>
-									<option value="" selected="selected" id="sele1">색상선택</option>
-									<option value="gold">골드</option>
-									<option value="silver">실버</option>
-									<option value="pink">로즈골드</option>
-							</select></td>
+							<td>
+								<select id="color">
+										<option value="random" selected="selected" id="sele1">색상선택</option>
+										<option value="gold">골드</option>
+										<option value="silver">실버</option>
+										<option value="pink">로즈골드</option>
+								</select>
+							</td>
 						</tr>
 
 						<tr class="both"></tr>
@@ -500,17 +540,15 @@ p {
 				<hr>
 				<div id="price_all">
 					<div id="price_con">
-						<span>total : <fmt:formatNumber
-								value="${productview.p_price}" /></span><span>원</span>
+						<span>total : <fmt:formatNumber value="${productview.p_price}" />원</span>
 					</div>
 				</div>
 
 
 				<div id="finish_btn">
 
-					<a href="#" id="good" data_num="${sessionScope.loginUser.id}"
-						data_name="${productview.p_name}"> <span>찜하기</span>
-					</a> <a href="#" id="cart" data_num="${sessionScope.loginUser.id}">
+					<a href="#" id="good" data_num="${sessionScope.loginUser.id}" data_name="${productview.p_name}"> <span>찜하기</span> </a> 
+					<a href="#" id="cart" data_num="${sessionScope.loginUser.id}" data_img="${productview.p_img}" data_name="${productview.p_name}" data_price="${productview.p_price}">
 						<span>장바구니</span>
 					</a> <a href="#" id="sell"> <span>결제</span>
 					</a>

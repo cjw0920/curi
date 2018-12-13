@@ -8,15 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.curi.dao.BoardDAO;
+import com.curi.dao.CartDAO;
 import com.curi.dao.ProductDAO;
 import com.curi.dao.ReplyDAO;
 import com.curi.dao.WishDAO;
+import com.curi.dto.CartDTO;
 import com.curi.dto.ProductCommentDTO;
 import com.curi.dto.ProductDTO;
 import com.curi.dto.ReplyDTO;
 import com.curi.dto.WishDTO;
 
-public class WishInsertPlayAction implements Action{
+public class CartInsertPlayAction implements Action{
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
@@ -26,19 +28,25 @@ public class WishInsertPlayAction implements Action{
 		
 			String user = request.getParameter("user");
 			int p_code = Integer.parseInt(request.getParameter("p_code"));
+			int p_price = Integer.parseInt(request.getParameter("p_price"));
+			String p_img =request.getParameter("p_img");
+			String color = request.getParameter("color");
 			String p_name =request.getParameter("p_name");
 			
-			System.out.println(user+","+p_code+","+p_name);
+			System.out.println(p_name);
 			
+			System.out.println();
+			
+			
+			System.out.println(p_price);
 
-			WishDTO wDto = new WishDTO(user, p_name, p_code);
-			WishDAO wDao = WishDAO.getInstance();
+			CartDTO cDto = new CartDTO(user, p_name, color, p_code, p_img, p_price);
+			CartDAO cDao = CartDAO.getInstance();
 			
-			wDao.Insert(wDto);
+			System.out.println(cDto);
 			
-			ProductDAO pDao = ProductDAO.getInstance();
-			pDao.GoodCntPlus(p_code);
-			
+			cDao.Insert(cDto);
+
 			
 			return null;
 	}

@@ -390,6 +390,14 @@
      	margin-top: 5px;
      	font-size: 15px;
      }
+     
+     #wish{
+     	cursor: pointer;
+     }
+     
+     #cart{
+     	cursor: pointer;
+     }
 
 </style>
 
@@ -416,10 +424,18 @@ $(document).on("click","#wish",function(){
 	if(user==""){
 		alert("로그인 해주세요");
 	}else{
-		$(this).attr("href","WishListAction.bizpoll?user="+user);
+		$(this).attr("href","WishList.bizpoll?user="+user);
 	}
 }); 
-
+$(document).on("click","#cart",function(){
+	var user = $(this).attr("data_num");
+	
+	if(user==""){
+		alert("로그인 해주세요");
+	}else{
+		$(this).attr("href","CartList.bizpoll?user="+user);
+	}
+}); 
  	</script>
  	
 </head>
@@ -444,7 +460,7 @@ $(document).on("click","#wish",function(){
 								<li>
 									<a id ="header_line1_mypage" href="#">마이페이지▼</a>
 									<div id="header_line1_dropdown">
-										<a href="#">장바구니</a>
+										<a data_num="${sessionScope.loginUser.id}" id="cart">장바구니</a>
 										<a  data_num="${sessionScope.loginUser.id}" id="wish">위시리스트</a>
 										<a href="<%=path%>/memberUpdate.bizpoll">회원정보 수정</a>
 										<a href="<%=path%>/memberPwUpdate.bizpoll">비밀번호 변경</a>
@@ -487,13 +503,13 @@ $(document).on("click","#wish",function(){
 						</li>			
 						<li><a href="<%=path%>/category.bizpoll?keyword=necklace">NECKLACE</a></li>
 						
-						<li><a href="<%=path%>/category.bizpoll?keyword=ring">RING</a></li>
+						<li><a href="<%=path%>/category.bizpoll?keyword=ling">RING</a></li>
 						
 						<li><a href="<%=path%>/category.bizpoll?keyword=bracelet">BRACELET</a></li>
 
 						<li><a href="<%=path%>/category.bizpoll?keyword=set">SET</a></li>
 						
-						<li><a href="<%=path%>/boardList.bizpoll">게시판</a></li>
+						<li><a href="<%=path%>/boardList.bizpoll">고객센터</a></li>
 						
 					</ul>
 				</div>

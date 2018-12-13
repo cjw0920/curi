@@ -20,6 +20,9 @@ import com.curi.action.BoardSearchAction;
 import com.curi.action.BoardUpdateAction;
 import com.curi.action.BoardUpdatePlayAction;
 import com.curi.action.BoardViewcntAction;
+import com.curi.action.CartDeleteAction;
+import com.curi.action.CartInsertPlayAction;
+import com.curi.action.CartListAction;
 import com.curi.action.CategoryAction;
 import com.curi.action.CommemtDeleteAction;
 import com.curi.action.CommemtListAction;
@@ -212,6 +215,15 @@ public class BizpollFrontController extends HttpServlet {
 			forward = action.excute(request, response);
 		}else if(command.equals("/WishDeletePlay.bizpoll")) {
 			action =new WishDeleteAction();
+			forward = action.excute(request, response);
+		}else if(command.equals("/CartInsert.bizpoll")) {
+			action =new CartInsertPlayAction();
+			forward = action.excute(request, response);
+		}else if(command.equals("/CartList.bizpoll")) {
+			action =new CartListAction();
+			forward = action.excute(request, response);
+		}else if(command.equals("/CartDelete.bizpoll")) {
+			action =new CartDeleteAction();
 			forward = action.excute(request, response);
 		}
 		
